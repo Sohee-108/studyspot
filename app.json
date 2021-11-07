@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "studyspot",
+    "slug": "studyspot",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "studyspot"
+}
