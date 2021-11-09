@@ -1,21 +1,36 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { Alert, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
+import styled from 'styled-components';
+import studyTimer from './view/studyTimer.js'
 
 export default function App() {
+  function timerStart() {
+    console.log("측정시작");
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <CenteredView>
+        <Button><Text>공부시간 측정하기</Text></Button>
+        <Text title="studyTimer">00:00:00</Text>
+        <Button title="timerstart" onPress={timerStart}></Button>
+      
+      </CenteredView>
+      
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Button = styled.TouchableOpacity`
+  background-color: #f4511e;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 5px;
+  color: #FFFFFF;
+
+`;
+
+const CenteredView = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
