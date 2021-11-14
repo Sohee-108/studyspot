@@ -1,33 +1,33 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import { Alert, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
+
+import Main from './view/Main';
+
 import styled from 'styled-components';
-import studyTimer from './view/studyTimer.js'
+
+// react-navigation 모듈
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+/* import {Fonts} from './src/Fonts'; */
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  function timerStart() {
-    console.log("측정시작");
-  }
 
   return (
-      <CenteredView>
-        <Button><Text>공부시간 측정하기</Text></Button>
-        <Text title="studyTimer">00:00:00</Text>
-        <Button title="timerstart" onPress={timerStart}></Button>
-      
-      </CenteredView>
-      
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerBlurEffect: 'light', headerTransparent: true }}>
+        <Stack.Screen name="Main" component={Main} options={{
+          headerShown: false
+        }} />
+
+      </Stack.Navigator>
+    </NavigationContainer>
+
   );
 }
-
-const Button = styled.TouchableOpacity`
-  background-color: #f4511e;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 5px;
-  color: #FFFFFF;
-
-`;
 
 const CenteredView = styled.View`
   flex: 1;
