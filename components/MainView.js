@@ -34,6 +34,7 @@ const Button = styled.TouchableOpacity`
 
 const Text1 = styled.Text`
 font-size: 30px;
+font-family: 'BMHANNAProOTF';
 `;
 // #endregion
 
@@ -42,11 +43,12 @@ const MainView = () => {
     const navigation = useNavigation();
 
     return (
-        <CenteredView>
+    <CenteredView>
       <MenuView>
-        <Button title="Timer" style={{ backgroundColor: '#FFA7A7' }} onPress={() => navigation.navigate('Timer')}><Text1>공부시간 측정하기</Text1></Button>
-        <Button title="" style={{ backgroundColor: '#B2EBF4' }}><Text1>일정관리</Text1></Button><Button title="" style={{ backgroundColor: '#B7F0B1' }}><Text1>알람</Text1></Button>
-        <Button title="" style={{ backgroundColor: '#BDBDBD' }}><Text1>설정</Text1></Button>
+        <Button title="Timer" style={{ backgroundColor: '#FFA7A7' }} onPress={() => navigation.navigate('Timer')}><Text1>타이머</Text1></Button>
+        <Button title="" style={{ backgroundColor: '#B2EBF4' }} onPress={()=> navigation.navigate('Schedule')}><Text1>일정관리</Text1></Button>
+        <Button title="" style={{ backgroundColor: '#B7F0B1' }} onPress={()=> navigation.navigate('Alarm')}><Text1>알람</Text1></Button>
+        <Button title="" style={{ backgroundColor: '#BDBDBD' }} onPress={()=> navigation.navigate('Setting')}><Text1>설정</Text1></Button>
         {/* <Button title="" style={{ backgroundColor: '#BDBDBD' }}><Text1>{API_URL}</Text1></Button> */}
       </MenuView>
     </CenteredView>
