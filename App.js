@@ -19,9 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerBlurEffect: 'light', headerTransparent: true }}>
-        <Stack.Screen name="Main" component={Main} options={{
-          headerShown: false
-        }} />
+        <Stack.Screen name="Main" component={Main} options={{headerShown: false}} />
 
       </Stack.Navigator>
     </NavigationContainer>
