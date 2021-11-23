@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 const CenteredView = styled.SafeAreaView`
   flex: 1;
+  background-color: white;
   align-items: center;
   justify-content: center;
 `;
@@ -18,16 +19,15 @@ const ResetButton = styled.TouchableOpacity`
 
 const options = {
     container: {
-      backgroundColor: '#300',
+      backgroundColor: 'white',
       padding: 5,
       borderRadius: 5,
-      width: 130,
+      alignItems: 'center',
+      justigyContent: 'center'
     },
     text: {
-      fontSize: 30,
-      color: '#FFF',
-      marginLeft: 7,
-      
+      fontSize: 90,
+      color: 'black',
     }
   };
 
@@ -46,12 +46,13 @@ const StopWatchAPI = ({}) => {
     setReset(true);
   }
 
+
   return (
     <CenteredView>
       <Stopwatch laps start={start}
         reset={reset}
         options={options}
-        getTime={(time) => {}} />
+        getTime={(time) => {console.log(time)}} />
       <StartButton onPress={toggleStopwatch}>
         <Text style={{ fontSize: 30 }}>{!start ? "Start" : "Stop"}</Text>
       </StartButton>
