@@ -1,12 +1,14 @@
 import React, { Component, useState } from 'react';
-import { AppRegistry,Text, View,TouchableOpacity } from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 
 import styled from 'styled-components';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import { useNavigation } from '@react-navigation/native';
+import {Agenda} from 'react-native-calendars';
+
+// #region styled-component 부분
 
 const CenteredView = styled.SafeAreaView`
     flex: 1;
-    background-color: white;
 `;
 
 const ButtonView = styled.View`
@@ -15,29 +17,41 @@ const ButtonView = styled.View`
 `;
 
 const AddButton = styled.TouchableOpacity`
-    width:45px;
-    height:30px;  
+    width:60px;
+    height:45px;  
     align-items: center;
     justify-content: center;
+    margin-right:5%;
+    border-radius: 10px;
+    background-color: #D4F4FA;
 `;
 
 const AddText = styled.Text`
     font-size: 20;
 `;
 
-const Add = () => {
-
-}
+// #endregion
 
 const Schedule = () => {
-
+    const navigation = useNavigation();
 
     return (
         <CenteredView>
             <Agenda style={{}} 
-            />
-            <ButtonView style={{}} onPress={{Add}}>
-                <AddButton><AddText>추가</AddText></AddButton>
+            items={{
+                '2021-11-23': [{name: 'item 2 - any js object'}],
+                '2021-11-24': [],
+                '2021-11-25': [{name: 'item 3 - any js object'}, {name: 'any js object'}]
+            }}
+
+            renderItem={(items, firstItemInDay) => {
+                return (
+                <View>
+                    <Text>{items.name}</Text>
+                </View>);}}/>
+
+            <ButtonView onPress={{Add}}>
+                <AddButton onPress={()=> navigation.navigate('ScheduleAdd')}><AddText>추가</AddText></AddButton>
             </ButtonView>
         </CenteredView>
     );

@@ -1,15 +1,14 @@
 import React, { Component, useState } from 'react';
-import { AppRegistry, StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, TouchableHighlight, Alert, TouchableOpacity } from 'react-native';
+import styled from 'styled-components';
 
-//알람API 
-import { Alarm } from 'react-native-alarm-manager';
 
 const AlarmManager = () => {
     return (
-            <View>
+        <View>
             
-            </View>
+        </View>
     );
-}
+};
 
 export default AlarmManager;

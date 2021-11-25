@@ -9,6 +9,8 @@
   "dependencies": {
     "@fullcalendar/daygrid": "^5.10.1",
     "@fullcalendar/react": "^5.10.1",
+    "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/push-notification-ios": "^1.10.1",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
     "expo": "~43.0.0",
@@ -18,6 +20,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.2",
+    "react-native-alarm-clock": "^2.0.2",
     "react-native-alarm-manager": "^1.1.2",
     "react-native-calendars": "^1.1268.0",
     "react-native-dotenv": "^3.3.0",

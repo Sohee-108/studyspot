@@ -2,7 +2,6 @@ import React from 'react';
 import { Text, View, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
-import { API_URL } from '@env';
 
 import styled from 'styled-components';
 
@@ -38,13 +37,13 @@ const MenuButton = styled.TouchableOpacity`
   align-items: center;
   padding: 15px;
   margin: 5px;
-  width: 150px;
-  height: 150px;
+  width: 80%;
+  height: 35%;
   color: #FFFFFF;
 `;
 
 const Text1 = styled.Text`
-font-size: 30px;
+font-size: 50px;
 font-family: 'BMHANNAProOTF';
 `;
 
@@ -65,9 +64,7 @@ const MainView = () => {
       <MenuView>
         <MenuButton title="Timer" style={{ backgroundColor: '#FFA7A7' }} onPress={() => navigation.navigate('Timer')}><Text1>타이머</Text1></MenuButton>
         <MenuButton title="" style={{ backgroundColor: '#B2EBF4' }} onPress={()=> navigation.navigate('Schedule')}><Text1>일정관리</Text1></MenuButton>
-        <MenuButton title="" style={{ backgroundColor: '#B7F0B1' }} onPress={()=> navigation.navigate('AlarmManager')}><Text1>알람</Text1></MenuButton>
         <MenuButton title="" style={{ backgroundColor: '#BDBDBD' }} onPress={()=> navigation.navigate('Setting')}><Text1>설정</Text1></MenuButton>
-        {/* <Button title="" style={{ backgroundColor: '#BDBDBD' }}><Text1>{API_URL}</Text1></Button> */}
       </MenuView>
     </CenteredView>
     );
