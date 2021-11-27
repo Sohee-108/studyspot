@@ -1,7 +1,6 @@
-
-import React, { Component, useState } from 'react';
-import { AppRegistry, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Stopwatch, Timer } from 'react-native-stopwatch-timer';
+import React, { useState } from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
+import { Stopwatch } from 'react-native-stopwatch-timer';
 import styled from 'styled-components';
 
 const CenteredView = styled.SafeAreaView`

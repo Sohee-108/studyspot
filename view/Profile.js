@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import { AppRegistry, StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import React from 'react';
+import { Text, View } from 'react-native';
 
 const Profile = () => {
 

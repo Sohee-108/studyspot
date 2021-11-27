@@ -1,10 +1,11 @@
-import React, { Component, useState } from 'react';
-import {Text, View, TouchableOpacity, Button} from 'react-native';
+import React, { Component, useState, useEffect } from 'react';
+import {Text, View, TouchableOpacity, Button, styles, Alert} from 'react-native';
 
 import styled from 'styled-components';
 import { useNavigation } from '@react-navigation/native';
-import {Agenda} from 'react-native-calendars';
+import {Agenda, Calendar} from 'react-native-calendars';
 import Modal from "react-native-modal";
+import MinCalendar from '../components/MinCalendar';
 
 // #region styled-component 부분
 
@@ -58,9 +59,7 @@ const AddValue = styled.TextInput`
 
 // #endregion
 
-
 const Schedule = () => {
-    const navigation = useNavigation();
 
     const [isModalVisible, setModalVisible] = useState(false);
 
@@ -71,26 +70,24 @@ const Schedule = () => {
     const [day, setDay] = useState("");
     const getDay = (day) => {
         setDay(day);
+
+        useEffect(() => {
+            console.log(day);
+        },[day]);
     }
+
     const [time, setTime] = useState("");
     const getTime = (time) => {
         setTime(time);
     }
+
     const [name, setName] = useState("");
     const getName = (name) => {
         setName(name);
-        console.log(setName);
     }
     const [content, setContent] = useState("");
     const getContent = (content) => {
         setContent(content);
-    }
-
-    const minCalendar = () => {
-
-        return(
-            <View><Calendar></Calendar></View>
-        )
     }
 
     return (
@@ -110,15 +107,17 @@ const Schedule = () => {
 
             <ButtonView>
                 <AddButton1 onPress={toggleModal}><AddText>추가</AddText></AddButton1>
-                <Modal isVisible={isModalVisible}>
-                <CenteredView2 style={{flex:1,backgroundColor:''}}>
-                    <AddValue placeholder="날짜를 입력하세요. ex)2021-01-03" value={day} onChange={setDay}></AddValue>
-                    <TouchableOpacity style={{backgroundColor:'black'}} onPress={minCalendar}><Text>달력</Text></TouchableOpacity>
+                <Modal isVisible={isModalVisible} style={{}}>
+                <CenteredView2 style={{flex:1}}>
+                <AddValue placeholder="날짜를 입력하세요. ex)2021-05-13" value={day} onChange={setDay}></AddValue>
+                    {/* <TouchableOpacity style={{backgroundColor:'black'}} onPress={MinCalendar}><Text>달력</Text></TouchableOpacity> */}
                     <AddValue placeholder="시간을 입력하세요. ex)17:00~20:00" value={time} onChange={setTime}></AddValue>
                     <AddValue placeholder="일정명을 입력하세요." title="name" value={name} onChange={setName}></AddValue>
                     <AddValue placeholder="일정내용을 입력하세요." value={content} onChange={setContent}></AddValue>
-                    <AddButton2 title="back" onPress = {toggleModal}>
+                    <AddButton2 title="addandback" onPress = {toggleModal}>
                     <AddText>일정 추가</AddText></AddButton2>
+                    <AddButton2 title="back" onPress = {toggleModal} style={{marginTop:10}}>
+                    <AddText>취소</AddText></AddButton2>
                 </CenteredView2>
                 </Modal>
             </ButtonView>
