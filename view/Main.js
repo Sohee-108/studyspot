@@ -5,6 +5,8 @@ import Timer from './StopWatch';
 import Schedule from './Schedule';
 import Setting from './Setting';
 import Profile from './Profile';
+import QNA from './QNA';
+import Theme from './Theme';
 
 // react-navigation 모듈
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -20,6 +22,8 @@ const Main = (navigation) => {
       <MainStack.Screen name="Schedule" component={Schedule} options={{title: "일정관리"}} />
       <MainStack.Screen name="Setting" component={Setting} options={{title: "설정"}} />
       <MainStack.Screen name="Profile" component={Profile} options={{title: "프로필"}} />
+      <MainStack.Screen name="QNA" component={QNA} options={{title: "문의하기"}} />
+      <MainStack.Screen name="Theme" component={Theme} options={{title: "테마"}} />
       
     </MainStack.Navigator>
 
