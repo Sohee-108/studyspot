@@ -9,6 +9,7 @@
   "dependencies": {
     "@fullcalendar/daygrid": "^5.10.1",
     "@fullcalendar/react": "^5.10.1",
+    "@react-native-async-storage/async-storage": "^1.15.13",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/push-notification-ios": "^1.10.1",
     "@react-navigation/native": "^6.0.6",
