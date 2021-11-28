@@ -22,7 +22,7 @@ const options = {
       padding: 5,
       borderRadius: 5,
       alignItems: 'center',
-      justigyContent: 'center'
+      justigyContent: 'center',
     },
     text: {
       fontSize: 90,
