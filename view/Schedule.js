@@ -1,16 +1,8 @@
-import React, { Component, useState, useEffect } from "react";
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  Button,
-  styles,
-  Alert,
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import { Text, View, TouchableOpacity } from "react-native";
 
 import styled from "styled-components";
-import { useNavigation } from "@react-navigation/native";
-import { Agenda, Calendar } from "react-native-calendars";
+import { Agenda } from "react-native-calendars";
 import Modal from "react-native-modal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

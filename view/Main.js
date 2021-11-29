@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Text } from "react-native";
+import { Image } from "react-native";
 import styled from "styled-components";
 import { useNavigation } from "@react-navigation/native";
 
