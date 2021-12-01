@@ -15,6 +15,8 @@ import styled from "styled-components";
 
 const CenteredView = styled.SafeAreaView`
   flex: 1;
+  align-items: center;
+  justify-content: center;
 `;
 
 const MenuView = styled.View`
@@ -22,7 +24,7 @@ const MenuView = styled.View`
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 35px;
+  margin-bottom: 50px;
 `;
 
 const MenuButton = styled.TouchableOpacity`

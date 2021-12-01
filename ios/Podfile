@@ -16,6 +16,9 @@ target 'studyspot' do
     :hermes_enabled => podfile_properties['expo.jsEngine'] == 'hermes'
   )
 
+  #firebase 
+  pod  'Firebase/Analytics'
+  
   # Uncomment to opt-in to using Flipper
   #
   # if !ENV['CI']
