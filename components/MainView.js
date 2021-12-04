@@ -14,6 +14,7 @@ import styled from "styled-components";
 // #region styled-component 부분
 
 const CenteredView = styled.SafeAreaView`
+  background-color: #353535;
   flex: 1;
   align-items: center;
   justify-content: center;
@@ -53,21 +54,21 @@ const MainView = () => {
       <MenuView>
         <MenuButton
           title="Timer"
-          style={{ backgroundColor: "#FFA7A7" }}
+          style={{ backgroundColor: "#DB8383" }}
           onPress={() => navigation.navigate("Timer")}
         >
           <Text1>타이머</Text1>
         </MenuButton>
         <MenuButton
           title=""
-          style={{ backgroundColor: "#B2EBF4" }}
+          style={{ backgroundColor: "#8EC7D0" }}
           onPress={() => navigation.navigate("Schedule")}
         >
           <Text1>일정관리</Text1>
         </MenuButton>
         <MenuButton
           title=""
-          style={{ backgroundColor: "#BDBDBD" }}
+          style={{ backgroundColor: "#999999" }}
           onPress={() => navigation.navigate("Setting")}
         >
           <Text1>설정</Text1>
