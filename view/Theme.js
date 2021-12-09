@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Text, View, styles } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+  Image,
+  imgActive,
+} from "react-native";
 
 import Carousel from "react-native-snap-carousel";
-import { Dimensions } from "react-native";
 
 const CenteredView = styled.SafeAreaView`
   flex: 1;
@@ -32,52 +39,59 @@ const CBText = styled.Text`
   color: #fcfcfc;
 `;
 
-// carousel slider width
-export const SCREEN_WIDTH = Dimensions.get("window").width;
-export const CAROUSEL_VERTICAL_OUTPUT = 56;
-export const CAROUSEL_ITEM_WIDTH = SCREEN_WIDTH - CAROUSEL_VERTICAL_OUTPUT;
+const images = [
+  "/Users/choesohui/Project/ReactNative/studyspot/assets/images/lightmode.png",
+  "/Users/choesohui/Project/ReactNative/studyspot/assets/images/darkmode.png",
+];
+
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
 
 const Theme = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [imgActive, setimgActive] = useState(0);
 
-  const renderItem = (
-    { item } // render every carousel content
-  ) => (
-    <View style={styles.snapCarouselItem}>
-      <View style={styles.carouselItemTitle}>
-        {item.renderIcon()}
-        <Text style={styles.carouselItemTitleText}>{item.title}</Text>
-      </View>
-      <Text style={styles.descriptionText}>{item.description}</Text>
-    </View>
-  );
-
-  const renderPagination = () => (
-    // render carousel pagination
-    <Pagination
-      dotsLength={carouselData.length}
-      activeDotIndex={activeSlide}
-      dotStyle={styles.dotStyle}
-      containerStyle={styles.paginationContainer}
-    />
-  );
+  onchange = (nativeEvent) => {
+    if (nativeEvent) {
+      const slide = Math.ceil(
+        nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width
+      );
+      if (slide != imgActive) {
+        setimgActive(slide);
+      }
+    }
+  };
 
   return (
-    <View>
-      <View>
-        <Text>React Native Carousel</Text>
-        <View>
-          <Carousel
-            data={carouselData}
-            renderItem={renderItem}
-            onSnapToItem={(index) => setActiveSlide(index)} // we will update active slide index
-            sliderWidth={SCREEN_WIDTH}
-            itemWidth={CAROUSEL_ITEM_WIDTH}
-          />
+    <CenteredView>
+      <View style={styles.wrap}>
+        <ScrollView
+          onScroll={({ nativeEvent }) => onchange(nativeEvent)}
+          showsHorizontalScrollIndicator={false}
+          pagingEnabled
+          horizontal
+          style={styles.wrap}
+        >
+          {images.map((e, index) => (
+            <Image
+              key={e}
+              resizeMode="stretch"
+              style={styles.wrap}
+              source={{ uri: e }}
+            />
+          ))}
+        </ScrollView>
+        <View style={styles.wrapDot}>
+          {images.map((e, index) => (
+            <Text
+              key={e}
+              style={imgActive == index ? styles.dotActive : styles.dot}
+            >
+              ●
+            </Text>
+          ))}
         </View>
-        {renderPagination()}
       </View>
-    </View>
+    </CenteredView>
 
     /* } <CenteredView>
       <ModeImage source={require("../assets/images/lightmode.png")}></ModeImage>
@@ -91,4 +105,26 @@ const Theme = () => {
   </CenteredView> */
   );
 };
+
+const styles = StyleSheet.create({
+  wrap: {
+    width: WIDTH * 0.8,
+    height: HEIGHT * 0.7,
+  },
+  wrapDot: {
+    position: "absolute",
+    bottom: 0,
+    flexDirection: "row",
+    alignSelf: "center",
+  },
+  dotActive: {
+    margin: 5,
+    color: "black",
+  },
+  dot: {
+    margin: 5,
+    color: "white",
+  },
+});
+
 export default Theme;
