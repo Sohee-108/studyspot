@@ -4,9 +4,6 @@ import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components";
 
-import Theme from "./Theme";
-import QNA from "./QNA";
-
 const MenuBar = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;

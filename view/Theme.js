@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import {
   Text,
   View,
@@ -7,7 +7,6 @@ import {
   Dimensions,
   ScrollView,
   Image,
-  imgActive,
 } from "react-native";
 
 import Carousel from "react-native-snap-carousel";
@@ -28,6 +27,7 @@ const ChangeButton = styled.TouchableOpacity`
   border-radius: 30;
   width: 50px;
   height: 50px;
+  margin: 30px;
   background-color: #bdbdbd;
   align-items: center;
   justify-content: center;
@@ -75,7 +75,7 @@ const Theme = () => {
             <Image
               key={e}
               resizeMode="stretch"
-              style={styles.wrap}
+              style={styles.border}
               source={{ uri: e }}
             />
           ))}
@@ -91,18 +91,15 @@ const Theme = () => {
           ))}
         </View>
       </View>
+      <View style={{ flexDirection: "row" }}>
+        <ChangeButton>
+          <CBText>라이트</CBText>
+        </ChangeButton>
+        <ChangeButton>
+          <CBText>다크</CBText>
+        </ChangeButton>
+      </View>
     </CenteredView>
-
-    /* } <CenteredView>
-      <ModeImage source={require("../assets/images/lightmode.png")}></ModeImage>
-      <ChangeButton>
-        <CBText>적용</CBText>
-      </ChangeButton>
-      <ModeImage source={require("../assets/images/darkmode.png")}></ModeImage>
-      <ChangeButton>
-        <CBText>적용</CBText>
-      </ChangeButton>
-  </CenteredView> */
   );
 };
 
@@ -110,6 +107,11 @@ const styles = StyleSheet.create({
   wrap: {
     width: WIDTH * 0.8,
     height: HEIGHT * 0.7,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 1,
   },
   wrapDot: {
     position: "absolute",
@@ -124,6 +126,11 @@ const styles = StyleSheet.create({
   dot: {
     margin: 5,
     color: "white",
+  },
+  border: {
+    width: WIDTH * 0.8,
+    height: HEIGHT * 0.7,
+    borderRadius: 30,
   },
 });
 

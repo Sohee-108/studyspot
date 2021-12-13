@@ -1,16 +1,6 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import {
-  Alert,
-  Text,
-  View,
-  TouchableOpacity,
-  SafeAreaView,
-} from "react-native";
 
 import Main from "./view/Main";
-
-import styled from "styled-components";
 
 // react-navigation 모듈
 import { NavigationContainer } from "@react-navigation/native";

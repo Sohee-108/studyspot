@@ -30,9 +30,9 @@ const Main = () => {
         options={{
           title: "스터디스팟",
           headerStyle: {
-            backgroundColor: "#5D5D5D",
+            backgroundColor: "white",
           },
-          headerTintColor: "#fff",
+          // headerTintColor: "#fff",
           headerRight: () => (
             <ProfileButton onPress={() => navigation.navigate("Profile")}>
               <Image

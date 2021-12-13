@@ -8,7 +8,7 @@ const CenteredView = styled.View`
 `;
 
 const IntroText = styled.Text`
-  font-size: 20;
+  font-size: 20pt;
   padding: 5px;
 `;
 
@@ -20,4 +20,5 @@ const QNA = () => {
     </CenteredView>
   );
 };
+
 export default QNA;
