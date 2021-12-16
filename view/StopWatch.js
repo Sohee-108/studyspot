@@ -10,20 +10,44 @@ const CenteredView = styled.SafeAreaView`
   justify-content: center;
 `;
 
-const StartButton = styled.TouchableOpacity``;
+const StartButton = styled.TouchableOpacity`
+  border-width: 2px;
+  border-radius: 10px;
+  width: 150px;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 9%;
+  top: 30%;
+`;
 
-const ResetButton = styled.TouchableOpacity``;
+const ResetButton = styled.TouchableOpacity`
+  border-width: 2px;
+  border-radius: 10px;
+  width: 150px;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 9%;
+  top: 30%;
+`;
 
 const options = {
   container: {
-    backgroundColor: "white",
-    padding: 5,
-    borderRadius: 5,
+    width: 350,
+    height: 120,
+    borderRadius: 10,
+    borderWidth: 3,
     alignItems: "center",
-    justigyContent: "center",
+    justifyContent: "center",
+    position: "absolute",
+    top: "8%",
+    alignSelf: "center",
   },
   text: {
-    fontSize: 90,
+    fontSize: 80,
     color: "black",
   },
 };
@@ -54,10 +78,10 @@ const StopWatchAPI = ({}) => {
         }}
       />
       <StartButton onPress={toggleStopwatch}>
-        <Text style={{ fontSize: 30 }}>{!start ? "Start" : "Stop"}</Text>
+        <Text style={{ fontSize: 50 }}>{!start ? "Start" : "Stop"}</Text>
       </StartButton>
       <ResetButton onPress={resetStopwatch}>
-        <Text style={{ fontSize: 30 }}>Reset</Text>
+        <Text style={{ fontSize: 50 }}>Reset</Text>
       </ResetButton>
     </CenteredView>
   );
