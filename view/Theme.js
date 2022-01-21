@@ -24,7 +24,7 @@ const ModeImage = styled.Image`
 `;
 
 const ChangeButton = styled.TouchableOpacity`
-  border-radius: 30;
+  border-radius: 30px;
   width: 50px;
   height: 50px;
   margin: 30px;
@@ -34,7 +34,7 @@ const ChangeButton = styled.TouchableOpacity`
 `;
 
 const CBText = styled.Text`
-  font-size: 15;
+  font-size: 15px;
   font-family: "BMHANNAPro";
   color: #fcfcfc;
 `;

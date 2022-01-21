@@ -8,7 +8,7 @@ const CenteredView = styled.View`
 `;
 
 const IntroText = styled.Text`
-  font-size: 20pt;
+  font-size: 20px;
   padding: 5px;
 `;
 
