@@ -30,14 +30,17 @@ const Main = () => {
         options={{
           title: "스터디스팟",
           headerStyle: {
-            backgroundColor: "white",
+            backgroundColor: "#e86464",
           },
-          // headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: "white",
+          },
           headerRight: () => (
             <ProfileButton onPress={() => navigation.navigate("Profile")}>
               <Image
                 source={require("../assets/images/sky.jpeg")}
-                style={{ width: 30, height: 30, borderRadius: 20 }}
+                style={{ width: 30, height: 30, borderRadius: 10 }}
               ></Image>
             </ProfileButton>
           ),
@@ -46,32 +49,104 @@ const Main = () => {
       <MainStack.Screen
         name="Timer"
         component={Timer}
-        options={{ title: "공부시간 측정하기" }}
+        options={{
+          title: "공부시간 측정하기",
+          headerStyle: {
+            backgroundColor: "#e86464",
+          },
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: "white",
+          },
+          headerBackTitleVisible: false,
+          headerBackButtonMenuEnabled: false,
+          headerTintColor: "white",
+        }}
       />
       <MainStack.Screen
         name="Schedule"
         component={Schedule}
-        options={{ title: "일정관리" }}
+        options={{
+          title: "일정관리",
+          headerStyle: {
+            backgroundColor: "#e86464",
+          },
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: "white",
+          },
+          headerBackTitleVisible: false,
+          headerBackButtonMenuEnabled: false,
+          headerTintColor: "white",
+        }}
       />
       <MainStack.Screen
         name="Setting"
         component={Setting}
-        options={{ title: "설정" }}
+        options={{
+          title: "설정",
+          headerStyle: {
+            backgroundColor: "#e86464",
+          },
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: "white",
+          },
+          headerBackTitleVisible: false,
+          headerBackButtonMenuEnabled: false,
+          headerTintColor: "white",
+        }}
       />
       <MainStack.Screen
         name="Profile"
         component={Profile}
-        options={{ title: "프로필" }}
+        options={{
+          title: "프로필",
+          headerStyle: {
+            backgroundColor: "#e86464",
+          },
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: "white",
+          },
+          headerBackTitleVisible: false,
+          headerBackButtonMenuEnabled: false,
+          headerTintColor: "white",
+        }}
       />
       <MainStack.Screen
         name="QNA"
         component={QNA}
-        options={{ title: "문의하기" }}
+        options={{
+          title: "문의하기",
+          headerStyle: {
+            backgroundColor: "#e86464",
+          },
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: "white",
+          },
+          headerBackTitleVisible: false,
+          headerBackButtonMenuEnabled: false,
+          headerTintColor: "white",
+        }}
       />
       <MainStack.Screen
         name="Theme"
         component={Theme}
-        options={{ title: "테마" }}
+        options={{
+          title: "테마",
+          headerStyle: {
+            backgroundColor: "#e86464",
+          },
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: "white",
+          },
+          headerBackTitleVisible: false,
+          headerBackButtonMenuEnabled: false,
+          headerTintColor: "white",
+        }}
       />
     </MainStack.Navigator>
   );
