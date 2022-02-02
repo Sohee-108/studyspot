@@ -13,7 +13,7 @@ const CenteredView = styled.SafeAreaView`
   background-color: white;
   flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 const MenuView = styled.View`
@@ -21,18 +21,18 @@ const MenuView = styled.View`
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 `;
 
 const MenuButton = styled.TouchableOpacity`
-  border-radius: 10px;
+  border-radius: 30px;
+  border-width: 8px;
   justify-content: center;
   align-items: center;
-  padding: 15px;
-  margin: 5px;
+  margin: 15px;
   width: 80%;
   height: 35%;
-  color: #ffffff;
+  border-color: #ff9494;
 `;
 
 const Text1 = styled.Text`
@@ -48,25 +48,13 @@ const MainView = () => {
   return (
     <CenteredView>
       <MenuView>
-        <MenuButton
-          title="Timer"
-          style={{ backgroundColor: "#FFA7A7" }}
-          onPress={() => navigation.navigate("Timer")}
-        >
+        <MenuButton title="Timer" onPress={() => navigation.navigate("Timer")}>
           <Text1>타이머</Text1>
         </MenuButton>
-        <MenuButton
-          title=""
-          style={{ backgroundColor: "#B2EBF4" }}
-          onPress={() => navigation.navigate("Schedule")}
-        >
+        <MenuButton title="" onPress={() => navigation.navigate("Schedule")}>
           <Text1>일정관리</Text1>
         </MenuButton>
-        <MenuButton
-          title=""
-          style={{ backgroundColor: "#BDBDBD" }}
-          onPress={() => navigation.navigate("Setting")}
-        >
+        <MenuButton title="" onPress={() => navigation.navigate("Setting")}>
           <Text1>설정</Text1>
         </MenuButton>
       </MenuView>
