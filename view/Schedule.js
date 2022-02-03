@@ -30,7 +30,7 @@ const AddButton1 = styled.TouchableOpacity`
   margin-right: 5%;
   margin-bottom: 10%;
   border-radius: 10px;
-  background-color: #001ec9;
+  background-color: #ff9494;
 `;
 
 const AddText = styled.Text`
@@ -43,7 +43,7 @@ const AddButton2 = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background-color: #001ec9;
+  background-color: #ff9494;
 `;
 
 const AddValue = styled.TextInput`
@@ -66,6 +66,7 @@ const Schedule = () => {
     setModalVisible(!isModalVisible);
   };
 
+  //일정 추가
   const addSchedule = async () => {
     // 여기서부터 scheduleList에 값 추가
     var _scheduleList = scheduleList;
@@ -87,7 +88,31 @@ const Schedule = () => {
     getData();
   }, []);
 
+  //일정 삭제
+  const rmSchedule = async () => {
+    var reScheduleList = scheduleList;
+    console.log(_reScheduleList[day]);
+    if (rmSchedule[day]) {
+      rmSchedule[day].push({ time, name, content });
+    } else {
+      rmSchedule[day] = [{ time, name, content }];
+    }
+
+    const jsonValue = JSON.stringify(rmSchedule);
+    await AsyncStorage.setItem("@schedule", jsonValue);
+
+    setScheduleList(rmSchedule);
+    toggleModal();
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   const allClear = () => {};
+
+  //일정 수정
+  const reScheduleList = () => {};
 
   const getData = async () => {
     try {
@@ -112,12 +137,29 @@ const Schedule = () => {
   return (
     <CenteredView1>
       <Agenda
-        style={{}}
+        style={{ color: "blue" }}
+        theme={{
+          selectedDayBackgroundColor: "#ff9494",
+          selectedDayTextColor: "#ffffff",
+          todayTextColor: "#ff9494",
+          dotColor: "#ff9494",
+          agendaDayTextColor: "#ff9494",
+          agendaDayNumColor: "#ff9494",
+          agendaTodayColor: "#ff9494",
+          agendaKnobColor: "#ff9494",
+        }}
         items={scheduleList}
+        loadItemsForMonth={(month) => {
+          console.log("trigger items loading");
+        }}
         renderItem={(items, firstItemInDay) => {
           return (
             <View>
-              <TouchableOpacity onPress={() => {}}>
+              <TouchableOpacity
+                onLongPress={() => {
+                  console.log("클릭");
+                }}
+              >
                 <Text>{items.time}</Text>
                 <Text>{items.name}</Text>
                 <Text>{items.content}</Text>
