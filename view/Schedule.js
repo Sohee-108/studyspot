@@ -56,70 +56,58 @@ const AddValue = styled.TextInput`
   margin-bottom: 30px;
 `;
 
+const SceduleBtn = styled.TouchableOpacity`
+  justify-content: center;
+  margin-top: 8%;
+`;
+
+const SceduleTxt = styled.Text`
+  justify-content: center;
+`;
 // #endregion
 
 const Schedule = () => {
   const [isModalVisible, setModalVisible] = useState(false);
-  const [scheduleList, setScheduleList] = useState();
+  const [scheduleList, setScheduleList] = useState({});
 
+  //Modal
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
 
-  //일정 추가
-  const addSchedule = async () => {
-    // 여기서부터 scheduleList에 값 추가
-    var _scheduleList = scheduleList;
-    console.log(_scheduleList[day]);
-    if (_scheduleList[day]) {
-      _scheduleList[day].push({ time, name, content });
-    } else {
-      _scheduleList[day] = [{ time, name, content }];
+  //일정추가
+  const addSchedule = () => {
+    try {
+      // 여기서부터 scheduleList에 값 추가
+      var _scheduleList = { ...scheduleList };
+      if (_scheduleList[day]) {
+        _scheduleList[day].push({ time, name, content });
+      } else {
+        _scheduleList[day] = [{ time, name, content }];
+      }
+
+      const jsonValue = JSON.stringify(_scheduleList);
+      console.log(_scheduleList, time, name, content);
+      AsyncStorage.setItem("@spot_key", jsonValue);
+
+      setScheduleList(scheduleList);
+      toggleModal();
+    } catch (e) {
+      console.log("err: " + e);
     }
-
-    const jsonValue = JSON.stringify(_scheduleList);
-    await AsyncStorage.setItem("@schedule", jsonValue);
-
-    setScheduleList(_scheduleList);
-    toggleModal();
   };
 
   useEffect(() => {
     getData();
   }, []);
 
-  //일정 삭제
-  const rmSchedule = async () => {
-    var reScheduleList = scheduleList;
-    console.log(_reScheduleList[day]);
-    if (rmSchedule[day]) {
-      rmSchedule[day].push({ time, name, content });
-    } else {
-      rmSchedule[day] = [{ time, name, content }];
-    }
-
-    const jsonValue = JSON.stringify(rmSchedule);
-    await AsyncStorage.setItem("@schedule", jsonValue);
-
-    setScheduleList(rmSchedule);
-    toggleModal();
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
-
+  //일정삭제
   const allClear = () => {};
-
-  //일정 수정
-  const reScheduleList = () => {};
 
   const getData = async () => {
     try {
-      const value = await AsyncStorage.getItem("@schedule");
-
+      const value = await AsyncStorage.getItem("@spot_key");
       console.log(value);
-
       if (value !== null) {
         setScheduleList(JSON.parse(value));
       }
@@ -137,7 +125,6 @@ const Schedule = () => {
   return (
     <CenteredView1>
       <Agenda
-        style={{ color: "blue" }}
         theme={{
           selectedDayBackgroundColor: "#ff9494",
           selectedDayTextColor: "#ffffff",
@@ -149,21 +136,18 @@ const Schedule = () => {
           agendaKnobColor: "#ff9494",
         }}
         items={scheduleList}
-        loadItemsForMonth={(month) => {
-          console.log("trigger items loading");
-        }}
-        renderItem={(items, firstItemInDay) => {
+        renderItem={(items) => {
           return (
             <View>
-              <TouchableOpacity
+              <SceduleBtn
                 onLongPress={() => {
                   console.log("클릭");
                 }}
               >
-                <Text>{items.time}</Text>
-                <Text>{items.name}</Text>
-                <Text>{items.content}</Text>
-              </TouchableOpacity>
+                <SceduleTxt>{items.time}</SceduleTxt>
+                <SceduleTxt>{items.name}</SceduleTxt>
+                <SceduleTxt>{items.content}</SceduleTxt>
+              </SceduleBtn>
             </View>
           );
         }}
@@ -197,7 +181,12 @@ const Schedule = () => {
               value={content}
               onChangeText={setContent}
             ></AddValue>
-            <AddButton2 title="addandback" onPress={addSchedule}>
+            <AddButton2
+              title="addandback"
+              onPress={() => {
+                addSchedule();
+              }}
+            >
               <AddText>일정 추가</AddText>
             </AddButton2>
             <AddButton2
