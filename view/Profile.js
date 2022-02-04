@@ -43,7 +43,7 @@ const NameChange = styled.TouchableOpacity`
 
 const Text = styled.Text`
   color: black;
-  font-size: 14;
+  font-size: 14px;
 `;
 
 const Image = styled.Image``;
