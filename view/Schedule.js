@@ -87,11 +87,12 @@ const Schedule = () => {
       }
 
       const jsonValue = JSON.stringify(_scheduleList);
-      console.log(_scheduleList, time, name, content);
+      console.log(_scheduleList);
       AsyncStorage.setItem("@spot_key", jsonValue);
 
       setScheduleList(scheduleList);
       toggleModal();
+      getData();
     } catch (e) {
       console.log("err: " + e);
     }
@@ -99,9 +100,11 @@ const Schedule = () => {
 
   useEffect(() => {
     getData();
+    allClear();
+    console.log(scheduleList);
   }, []);
 
-  //일정삭제
+  //일정 추가 모달의 모든 내용 삭제
   const allClear = () => {};
 
   const getData = async () => {
