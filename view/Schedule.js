@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, TouchableOpacity } from "react-native";
+import { Text, View, TouchableOpacity, Alert } from "react-native";
 
 import styled from "styled-components";
 import { Agenda } from "react-native-calendars";
@@ -70,6 +70,11 @@ const Schedule = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [scheduleList, setScheduleList] = useState({});
 
+  const [day, setDay] = useState("");
+  const [time, setTime] = useState("");
+  const [name, setName] = useState("");
+  const [content, setContent] = useState("");
+
   //Modal
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
@@ -107,6 +112,16 @@ const Schedule = () => {
   //일정 추가 모달의 모든 내용 삭제
   const allClear = () => {};
 
+  //일정 삭제
+  const rmSchedule = () => {
+    try {
+      console.log("delete");
+    } catch (e) {
+      console.log("err: " + e);
+    }
+  };
+
+  //일정 가져오기
   const getData = async () => {
     try {
       const value = await AsyncStorage.getItem("@spot_key");
@@ -120,10 +135,27 @@ const Schedule = () => {
     }
   };
 
-  const [day, setDay] = useState("");
-  const [time, setTime] = useState("");
-  const [name, setName] = useState("");
-  const [content, setContent] = useState("");
+  //일정 삭제 알림창
+  const deleteAlert = () => {
+    Alert.alert(
+      "삭제",
+      "일정을 삭제하시겠습니까?",
+      [
+        {
+          text: "네",
+          onPress: () => {
+            rmSchedule();
+          },
+        },
+        {
+          text: "아니오",
+          onPress: () => console.log("아니오"),
+          style: "destructive",
+        },
+      ],
+      { cancelable: false }
+    );
+  };
 
   return (
     <CenteredView1>
@@ -142,11 +174,7 @@ const Schedule = () => {
         renderItem={(items) => {
           return (
             <View>
-              <SceduleBtn
-                onLongPress={() => {
-                  console.log("클릭");
-                }}
-              >
+              <SceduleBtn onLongPress={deleteAlert}>
                 <SceduleTxt>{items.time}</SceduleTxt>
                 <SceduleTxt>{items.name}</SceduleTxt>
                 <SceduleTxt>{items.content}</SceduleTxt>
