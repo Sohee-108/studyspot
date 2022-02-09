@@ -70,6 +70,7 @@ const Schedule = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [scheduleList, setScheduleList] = useState({});
 
+  var [id, setId] = useState(1);
   const [day, setDay] = useState("");
   const [time, setTime] = useState("");
   const [name, setName] = useState("");
@@ -86,9 +87,10 @@ const Schedule = () => {
       // 여기서부터 scheduleList에 값 추가
       var _scheduleList = { ...scheduleList };
       if (_scheduleList[day]) {
-        _scheduleList[day].push({ time, name, content });
+        id = id + 1;
+        _scheduleList[day].push({ id, time, name, content });
       } else {
-        _scheduleList[day] = [{ time, name, content }];
+        _scheduleList[day] = [{ id, time, name, content }];
       }
 
       const jsonValue = JSON.stringify(_scheduleList);
@@ -98,28 +100,71 @@ const Schedule = () => {
       setScheduleList(scheduleList);
       toggleModal();
       getData();
+      allClear();
     } catch (e) {
       console.log("err: " + e);
     }
   };
-
-  useEffect(() => {
-    getData();
-    allClear();
-    console.log(scheduleList);
-  }, []);
 
   //일정 추가 모달의 모든 내용 삭제
-  const allClear = () => {};
+  const allClear = () => {
+    setDay("");
+    setTime("");
+    setName("");
+    setContent("");
+  };
+
+  //일정 삭제 알림창
+  const deleteAlert = () => {
+    console.log();
+    Alert.alert(
+      "삭제",
+      "일정을 삭제하시겠습니까?",
+      [
+        {
+          text: "네",
+          onPress: () => {
+            removeValue();
+          },
+        },
+        {
+          text: "아니오",
+          onPress: () => console.log("아니오"),
+          style: "destructive",
+        },
+      ],
+      { cancelable: false }
+    );
+  };
 
   //일정 삭제
-  const rmSchedule = () => {
+  /* const removeValue = async (day, id) => {
     try {
-      console.log("delete");
+      if ((day, id)) {
+        await AsyncStorage.removeItem("@spot_key");
+
+        setScheduleList(scheduleList);
+        getData();
+      }
     } catch (e) {
+      // remove error
       console.log("err: " + e);
     }
-  };
+
+    console.log("Done.");
+  }; 
+
+  //Async Storage 전체 삭제
+  /* const removeValue = async () => {
+    try {
+      await AsyncStorage.removeItem("@spot_key");
+    } catch (e) {
+      // remove error
+      console.log("err: " + e);
+    }
+
+    console.log("Done.");
+  }; */
 
   //일정 가져오기
   const getData = async () => {
@@ -135,27 +180,9 @@ const Schedule = () => {
     }
   };
 
-  //일정 삭제 알림창
-  const deleteAlert = () => {
-    Alert.alert(
-      "삭제",
-      "일정을 삭제하시겠습니까?",
-      [
-        {
-          text: "네",
-          onPress: () => {
-            rmSchedule();
-          },
-        },
-        {
-          text: "아니오",
-          onPress: () => console.log("아니오"),
-          style: "destructive",
-        },
-      ],
-      { cancelable: false }
-    );
-  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <CenteredView1>
@@ -174,7 +201,11 @@ const Schedule = () => {
         renderItem={(items) => {
           return (
             <View>
-              <SceduleBtn onLongPress={deleteAlert}>
+              <SceduleBtn
+                onLongPress={() => {
+                  deleteAlert();
+                }}
+              >
                 <SceduleTxt>{items.time}</SceduleTxt>
                 <SceduleTxt>{items.name}</SceduleTxt>
                 <SceduleTxt>{items.content}</SceduleTxt>
