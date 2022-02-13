@@ -116,7 +116,6 @@ const Schedule = () => {
 
   //일정 삭제 알림창
   const deleteAlert = () => {
-    console.log();
     Alert.alert(
       "삭제",
       "일정을 삭제하시겠습니까?",
@@ -138,9 +137,10 @@ const Schedule = () => {
   };
 
   //일정 삭제
-  /* const removeValue = async (day, id) => {
+  const removeValue = async (day, id) => {
+    var _scheduleList = { ...scheduleList };
     try {
-      if ((day, id)) {
+      if (_scheduleList.id === id && _scheduleList.day === day) {
         await AsyncStorage.removeItem("@spot_key");
 
         setScheduleList(scheduleList);
@@ -151,8 +151,8 @@ const Schedule = () => {
       console.log("err: " + e);
     }
 
-    console.log("Done.");
-  }; 
+    console.log("삭제완료");
+  };
 
   //Async Storage 전체 삭제
   /* const removeValue = async () => {
@@ -203,7 +203,7 @@ const Schedule = () => {
             <View>
               <SceduleBtn
                 onLongPress={() => {
-                  deleteAlert();
+                  console.log(items);
                 }}
               >
                 <SceduleTxt>{items.time}</SceduleTxt>
@@ -244,7 +244,7 @@ const Schedule = () => {
               onChangeText={setContent}
             ></AddValue>
             <AddButton2
-              title="addandback"
+              title="add"
               onPress={() => {
                 addSchedule();
               }}

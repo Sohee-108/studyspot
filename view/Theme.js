@@ -9,8 +9,6 @@ import {
   Image,
 } from "react-native";
 
-import Carousel from "react-native-snap-carousel";
-
 const CenteredView = styled.SafeAreaView`
   flex: 1;
   background-color: white;
