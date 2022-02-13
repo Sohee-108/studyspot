@@ -145,7 +145,9 @@ const StopWatchAPI = ({}) => {
           <LapsButtonText>Clear</LapsButtonText>
         </LapsButton>
       </ButtonView>
-      <Text style={{ fontSize: 15, padding: 15 }}>기록</Text>
+      <Text style={{ fontSize: 15, fontFamily: "BMHANNAPro", padding: 15 }}>
+        기록
+      </Text>
 
       <ScrollView
         style={{
