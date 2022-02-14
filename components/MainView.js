@@ -32,7 +32,7 @@ const MenuButton = styled.TouchableOpacity`
   margin: 15px;
   width: 80%;
   height: 35%;
-  border-color: #ff9494;
+  border-color: #000000;
 `;
 
 const Text1 = styled.Text`

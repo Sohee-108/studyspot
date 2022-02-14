@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image } from "react-native";
 import styled from "styled-components";
 import { useNavigation } from "@react-navigation/native";
@@ -22,6 +22,10 @@ const MainStack = createNativeStackNavigator();
 
 const Main = () => {
   const navigation = useNavigation();
+
+  const color = ["#e86464", "#2478FF", "#FFDF24"]; //R, B, Y
+  var [currentColor, setCurrentColor] = useState(color[2]);
+
   return (
     <MainStack.Navigator>
       <MainStack.Screen
@@ -30,7 +34,7 @@ const Main = () => {
         options={{
           title: "스터디스팟",
           headerStyle: {
-            backgroundColor: "#e86464",
+            backgroundColor: { currentColor },
           },
           headerTitleStyle: {
             fontWeight: "bold",
@@ -52,7 +56,7 @@ const Main = () => {
         options={{
           title: "공부시간 측정하기",
           headerStyle: {
-            backgroundColor: "#e86464",
+            backgroundColor: currentColor,
           },
           headerTitleStyle: {
             fontWeight: "bold",
@@ -69,7 +73,7 @@ const Main = () => {
         options={{
           title: "일정관리",
           headerStyle: {
-            backgroundColor: "#e86464",
+            backgroundColor: currentColor,
           },
           headerTitleStyle: {
             fontWeight: "bold",
@@ -86,7 +90,7 @@ const Main = () => {
         options={{
           title: "설정",
           headerStyle: {
-            backgroundColor: "#e86464",
+            backgroundColor: currentColor,
           },
           headerTitleStyle: {
             fontWeight: "bold",
@@ -103,7 +107,7 @@ const Main = () => {
         options={{
           title: "프로필",
           headerStyle: {
-            backgroundColor: "#e86464",
+            backgroundColor: currentColor,
           },
           headerTitleStyle: {
             fontWeight: "bold",
@@ -120,7 +124,7 @@ const Main = () => {
         options={{
           title: "문의하기",
           headerStyle: {
-            backgroundColor: "#e86464",
+            backgroundColor: currentColor,
           },
           headerTitleStyle: {
             fontWeight: "bold",
@@ -137,7 +141,7 @@ const Main = () => {
         options={{
           title: "테마",
           headerStyle: {
-            backgroundColor: "#e86464",
+            backgroundColor: currentColor,
           },
           headerTitleStyle: {
             fontWeight: "bold",

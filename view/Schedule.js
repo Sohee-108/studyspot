@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, TouchableOpacity, Alert } from "react-native";
+import { Alert } from "react-native";
 
 import styled from "styled-components";
 import { Agenda } from "react-native-calendars";
 import Modal from "react-native-modal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import currentColor from "./Main";
+
 // #region styled-component 부분
 
-const CenteredView1 = styled.SafeAreaView`
+const CalendarView = styled.SafeAreaView`
   flex: 1;
 `;
 
-const CenteredView2 = styled.SafeAreaView`
+const AddScheduleView = styled.View`
+  flex: 1;
   align-items: center;
   justify-content: center;
+`;
+
+const AgendaView = styled.View`
+  background-color: white;
+  justify-content: center;
+  width: 90%;
+  height: 75px;
+  margin-top: 5%;
+  border-radius: 10px;
 `;
 
 const ButtonView = styled.View`
@@ -30,7 +42,7 @@ const AddButton1 = styled.TouchableOpacity`
   margin-right: 5%;
   margin-bottom: 10%;
   border-radius: 10px;
-  background-color: #ff9494;
+  background-color: #8c8c8c;
 `;
 
 const AddText = styled.Text`
@@ -43,7 +55,8 @@ const AddButton2 = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background-color: #ff9494;
+  background-color: #8c8c8c;
+  margin-top: 10px;
 `;
 
 const AddValue = styled.TextInput`
@@ -58,17 +71,21 @@ const AddValue = styled.TextInput`
 
 const SceduleBtn = styled.TouchableOpacity`
   justify-content: center;
-  margin-top: 8%;
+  padding: 10px;
 `;
 
 const SceduleTxt = styled.Text`
-  justify-content: center;
+  font-size: 25px;
+  font-family: "BMHANNAPro";
 `;
 // #endregion
 
 const Schedule = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [scheduleList, setScheduleList] = useState({});
+  const [currentItem, setcurrentItem] = useState({});
+  const [currentId, setcurrentId] = useState();
+  const [currentDay, setcurretndDay] = useState();
 
   var [id, setId] = useState(1);
   const [day, setDay] = useState("");
@@ -106,7 +123,7 @@ const Schedule = () => {
     }
   };
 
-  //일정 추가 모달의 모든 내용 삭제
+  //일정 추가 모달 내용 초기화
   const allClear = () => {
     setDay("");
     setTime("");
@@ -185,32 +202,42 @@ const Schedule = () => {
   }, []);
 
   return (
-    <CenteredView1>
+    <CalendarView>
       <Agenda
         theme={{
-          selectedDayBackgroundColor: "#ff9494",
-          selectedDayTextColor: "#ffffff",
-          todayTextColor: "#ff9494",
-          dotColor: "#ff9494",
-          agendaDayTextColor: "#ff9494",
-          agendaDayNumColor: "#ff9494",
-          agendaTodayColor: "#ff9494",
-          agendaKnobColor: "#ff9494",
+          selectedDayBackgroundColor: "#8C8C8C",
+          selectedDayTextColor: "white",
+          todayTextColor: "#8C8C8C",
+          dotColor: "#8C8C8C",
+          agendaDayTextColor: "#8C8C8C",
+          agendaDayNumColor: "#8C8C8C",
+          agendaTodayColor: "#8C8C8C",
+          agendaKnobColor: "#8C8C8C",
         }}
+        showClosingKnob={true}
         items={scheduleList}
         renderItem={(items) => {
           return (
-            <View>
+            <AgendaView>
               <SceduleBtn
                 onLongPress={() => {
                   console.log(items);
                 }}
+                /*} onLongPress={({ id, day }) => {
+                  if (id != currentId && day != currentDay) {
+                    setcurrentId(id);
+                    setcurretndDay(day);
+                    console.log(currentId);
+                    console.log(currentDay);
+                  }
+                }}*/
               >
-                <SceduleTxt>{items.time}</SceduleTxt>
-                <SceduleTxt>{items.name}</SceduleTxt>
+                <SceduleTxt>
+                  {items.name} ({items.time})
+                </SceduleTxt>
                 <SceduleTxt>{items.content}</SceduleTxt>
               </SceduleBtn>
-            </View>
+            </AgendaView>
           );
         }}
       />
@@ -219,8 +246,8 @@ const Schedule = () => {
         <AddButton1 onPress={toggleModal}>
           <AddText>추가</AddText>
         </AddButton1>
-        <Modal isVisible={isModalVisible} style={{}}>
-          <CenteredView2 style={{ flex: 1 }}>
+        <Modal isVisible={isModalVisible}>
+          <AddScheduleView>
             <AddValue
               placeholder="날짜를 입력하세요. ex)2021-05-13"
               value={day}
@@ -251,17 +278,13 @@ const Schedule = () => {
             >
               <AddText>일정 추가</AddText>
             </AddButton2>
-            <AddButton2
-              title="back"
-              onPress={toggleModal}
-              style={{ marginTop: 10 }}
-            >
+            <AddButton2 title="back" onPress={toggleModal}>
               <AddText>취소</AddText>
             </AddButton2>
-          </CenteredView2>
+          </AddScheduleView>
         </Modal>
       </ButtonView>
-    </CenteredView1>
+    </CalendarView>
   );
 };
 

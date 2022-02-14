@@ -91,7 +91,7 @@ const StopWatchAPI = ({}) => {
   const [reset, setReset] = useState(false);
   const [laps, setLaps] = useState([]);
   const [currentTime, setCurrentTime] = useState(0);
-  var paste = "";
+
   const toggleStopwatch = () => {
     setStart(!start);
     setReset(false);
