@@ -24,7 +24,7 @@ const Main = () => {
   const navigation = useNavigation();
 
   const color = ["#e86464", "#2478FF", "#FFDF24"]; //R, B, Y
-  var [currentColor, setCurrentColor] = useState(color[2]);
+  var [currentColor, setCurrentColor] = useState(color[1]);
 
   return (
     <MainStack.Navigator>

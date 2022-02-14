@@ -10,7 +10,7 @@ const MenuBar = styled.TouchableOpacity`
   align-items: center;
   width: 100%;
   padding: 20px;
-  border-bottom-width: 0.3;
+  border-bottom-width: 0.3px;
   border-color: grey;
 `;
 
