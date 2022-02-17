@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import <Firebase.h> //firebase 추가
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>

@@ -83,7 +83,6 @@
 				B4D1FDD9B2CE80CD71C5D971 /* Pods-studyspot.debug.xcconfig */,
 				8B441C6180DC9F7D6524F895 /* Pods-studyspot.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
