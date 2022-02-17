@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useNavigation } from "@react-navigation/native";
+
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+} from "@react-native-google-signin/google-signin";
+import auth from "@react-native-firebase/auth";
 
 import styled from "styled-components";
 
@@ -45,9 +51,27 @@ const Text1 = styled.Text`
 const MainView = () => {
   const navigation = useNavigation();
 
+  const googleSigninConfigure = () => {
+    GoogleSignin.configure({
+      webClientId:
+        "587985236624-rka1iu6r7moani49i9aue19gpo0lvko0.apps.googleusercontent.com",
+    });
+  };
+
+  useEffect(() => {
+    googleSigninConfigure();
+  }, []);
+
+  const onGoogleButtonPress = async () => {
+    const { idToken } = await GoogleSignin.signIn();
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    return auth().signInWithCredential(googleCredential);
+  };
+
   return (
     <CenteredView>
       <MenuView>
+        <GoogleSigninButton onPress={() => onGoogleButtonPress()} />
         <MenuButton title="Timer" onPress={() => navigation.navigate("Timer")}>
           <Text1>타이머</Text1>
         </MenuButton>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Image } from "react-native";
 import styled from "styled-components";
 import { useNavigation } from "@react-navigation/native";
@@ -24,7 +24,7 @@ const Main = () => {
   const navigation = useNavigation();
 
   const color = ["#e86464", "#2478FF", "#FFDF24"]; //R, B, Y
-  var [currentColor, setCurrentColor] = useState(color[1]);
+  var [currentColor, setCurrentColor] = useState(color[0]);
 
   return (
     <MainStack.Navigator>
@@ -34,7 +34,7 @@ const Main = () => {
         options={{
           title: "스터디스팟",
           headerStyle: {
-            backgroundColor: { currentColor },
+            backgroundColor: currentColor,
           },
           headerTitleStyle: {
             fontWeight: "bold",
