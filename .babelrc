@@ -1,5 +1,7 @@
 {
     "plugins": [
-      ["module:react-native-dotenv"]
+      ["module:react-native-dotenv"],
+      ["@babel/plugin-proposal-decorators", { "legacy": true}],
+      ["@babel/plugin-proposal-class-properties", { "loose": true}]
     ]
 }
