@@ -6,8 +6,6 @@ import { Agenda } from "react-native-calendars";
 import Modal from "react-native-modal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import currentColor from "./Main";
-
 // #region styled-component 부분
 
 const CalendarView = styled.SafeAreaView`

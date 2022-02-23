@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Image } from "react-native";
 import styled from "styled-components";
 import { useNavigation } from "@react-navigation/native";
@@ -27,7 +27,7 @@ const Main = () => {
   var [currentColor, setCurrentColor] = useState(color[0]);
 
   return (
-    <MainStack.Navigator>
+    <MainStack.Navigator initialRouteName="MainView">
       <MainStack.Screen
         name="MainView"
         component={MainView}
