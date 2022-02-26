@@ -5,7 +5,6 @@ import Main from "./view/Main";
 // react-navigation 모듈
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { View } from "react-native";
 
 /* import {Fonts} from './src/Fonts'; */
 
