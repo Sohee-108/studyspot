@@ -1,12 +1,8 @@
 import React, { useEffect } from "react";
-
-import { useNavigation } from "@react-navigation/native";
-
-import { GoogleSignin } from "@react-native-community/google-signin";
-import auth from "@react-native-firebase/auth";
-import GoogleSignInCustomButton from "./GoogleSignInCustomButton";
-
 import styled from "styled-components";
+import { useNavigation } from "@react-navigation/native";
+import { GoogleSignin } from "@react-native-community/google-signin";
+import GoogleSignInCustomButton from "./GoogleSignInCustomButton";
 
 // #region styled-component 부분
 
@@ -65,6 +61,12 @@ const MainView = () => {
         <GoogleSignInCustomButton />
         <MenuButton title="Timer" onPress={() => navigation.navigate("Timer")}>
           <Text1>타이머</Text1>
+        </MenuButton>
+        <MenuButton
+          title="LoginView"
+          onPress={() => navigation.navigate("LoginView")}
+        >
+          <Text1>로그인화면</Text1>
         </MenuButton>
         <MenuButton title="" onPress={() => navigation.navigate("Schedule")}>
           <Text1>일정관리</Text1>
