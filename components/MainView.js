@@ -1,8 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useNavigation } from "@react-navigation/native";
-import { GoogleSignin } from "@react-native-community/google-signin";
-import GoogleSignInCustomButton from "./GoogleSignInCustomButton";
 
 // #region styled-component 부분
 
@@ -45,20 +43,9 @@ const Text1 = styled.Text`
 const MainView = () => {
   const navigation = useNavigation();
 
-  useEffect(() => {
-    const socialGoogleConfigure = async () => {
-      await GoogleSignin.configure({
-        webClientId:
-          "587985236624-rka1iu6r7moani49i9aue19gpo0lvko0.apps.googleusercontent.com",
-      });
-    };
-    socialGoogleConfigure();
-  }, []);
-
   return (
     <CenteredView>
       <MenuView>
-        <GoogleSignInCustomButton />
         <MenuButton title="Timer" onPress={() => navigation.navigate("Timer")}>
           <Text1>타이머</Text1>
         </MenuButton>

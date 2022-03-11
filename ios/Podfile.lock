@@ -477,8 +477,8 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleSignIn (5.0.2):
-    - AppAuth (~> 1.2)
+  - GoogleSignIn (6.1.0):
+    - AppAuth (~> 1.4)
     - GTMAppAuth (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - GoogleUtilities/AppDelegateSwizzler (7.7.0):
@@ -829,8 +829,8 @@ PODS:
     - RNFBApp
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNGoogleSignin (5.0.0):
-    - GoogleSignIn (~> 5.0.0)
+  - RNGoogleSignin (7.1.0):
+    - GoogleSignIn (~> 6.1.0)
     - React-Core
   - RNReanimated (2.4.1):
     - DoubleConversion
@@ -921,7 +921,7 @@ DEPENDENCIES:
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFirestore (from `../node_modules/@react-native-firebase/firestore`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
-  - "RNGoogleSignin (from `../node_modules/@react-native-community/google-signin`)"
+  - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -1058,7 +1058,7 @@ EXTERNAL SOURCES:
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
-    :path: "../node_modules/@react-native-community/google-signin"
+    :path: "../node_modules/@react-native-google-signin/google-signin"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -1098,7 +1098,7 @@ SPEC CHECKSUMS:
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   GoogleAppMeasurement: ae033c3aad67e68294369373056b4d74cc8ae0d6
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
-  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
+  GoogleSignIn: c90b5bec45e780f54c6a8e1e3c182a86e3dda69d
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
@@ -1142,7 +1142,7 @@ SPEC CHECKSUMS:
   RNFBAuth: 1b0012cbb25c2dfd44e036182833758fd492a88c
   RNFBFirestore: bd5363b9bfd2e73e0d4848cd24c6bca75cbfe866
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNGoogleSignin: ad866d4c4af2651e36801dd3b7771d7715353499
+  RNGoogleSignin: 233fdfa02522216c19bf02a1e6c60b60a75ffb4c
   RNReanimated: 58e7b950e0172235ff8296dd39ec145f9577e301
   RNScreens: 4d83613b50b74ed277026375dc0810893b0c347f
   Yoga: 575c581c63e0d35c9a83f4b46d01d63abc1100ac

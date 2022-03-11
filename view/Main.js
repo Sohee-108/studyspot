@@ -11,8 +11,6 @@ import Profile from "./Profile";
 import QNA from "./QNA";
 import Theme from "./Theme";
 import LoginView from "../components/LoginView";
-import Login from "./Login";
-import SignUp from "./SignUp";
 
 // react-navigation 모듈
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -37,24 +35,6 @@ const Main = () => {
         options={{
           headerShown: false,
         }}
-      />
-      <MainStack.Screen
-        name="Login"
-        component={Login}
-        options={
-          {
-            // headerShown: false,
-          }
-        }
-      />
-      <MainStack.Screen
-        name="SignUp"
-        component={SignUp}
-        options={
-          {
-            // headerShown: false,
-          }
-        }
       />
       <MainStack.Screen
         name="MainView"

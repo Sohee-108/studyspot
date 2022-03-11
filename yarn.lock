@@ -1906,11 +1906,6 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.1.0.tgz#e42b1bef12d2415411519fd528e64b593b1363dc"
   integrity sha512-W/J0fNYVO01tioHjvYWQ9m6RgndVtbElzYozBq1ZPrHO/iCzlqoySHl4gO/fpCl9QEFjvJfjPgtPMTMlsoq5DQ==
 
-"@react-native-community/google-signin@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@react-native-community/google-signin/-/google-signin-5.0.0.tgz#d1d89c697cc214c10017fa283817e84bd03b2d76"
-  integrity sha512-MvFHImmtlmE1kJZgZ9XaULm/OBuQ/AQWOCPr3NzYTUv2cCqyGwfFrealo5PS/fuL/InCGcfqK1k/1dZ+67Hjmg==
-
 "@react-native-community/push-notification-ios@^1.1.1", "@react-native-community/push-notification-ios@^1.10.1", "@react-native-community/push-notification-ios@^1.2.0":
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/@react-native-community/push-notification-ios/-/push-notification-ios-1.10.1.tgz#d52a6d69ac1112df0f79e1d17978077629b76784"
@@ -1937,9 +1932,10 @@
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-14.4.0.tgz#c259b79345ef0d2457536b8139e26044a6901b81"
   integrity sha512-xmvkJzwA1JYlIJCGCIBEDAkJPNBJWBRDj3OeN6gfx83U7ikN8/lrV13rUyvKZEmI2FBxtt0Jpiydrc5ByWyVng==
 
-"@react-native-google-signin/google-signin@react-native-community/google-signin":
+"@react-native-google-signin/google-signin@^7.1.0":
   version "7.1.0"
-  resolved "https://codeload.github.com/react-native-community/google-signin/tar.gz/9e0ed3e6010efcbb89d781ad3b6276b34926bb6f"
+  resolved "https://registry.yarnpkg.com/@react-native-google-signin/google-signin/-/google-signin-7.1.0.tgz#de39000dc1e095c54b8136436ad43cfd8c938a0c"
+  integrity sha512-F8eaK4hATG/r+YSObKK15eFbJ2dZsf/fEL8+7T7iL4kDM4+oUJ43qUYv6fbvdsR29aRHaHcezVrfLVIY1Gswiw==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
