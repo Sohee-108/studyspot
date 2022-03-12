@@ -43,8 +43,7 @@ const GoogleLoginButton = styled.TouchableOpacity`
 const LoginView = () => {
   const navigation = useNavigation();
   const [loggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState([]);
-  const [userInfo, setUserInfo] = useState({});
+  const [user, setUser] = useState(user);
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -61,10 +60,12 @@ const LoginView = () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      // this.setState({ userInfo: userInfo});
-      setUserInfo(userInfo);
+      const user = userInfo;
+      setUser(user);
       const loggedIn = true;
       setLoggedIn(loggedIn);
+      console.log("login");
+      console.log(user);
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log("statusCodes.SIGN_IN_CANCELLED");
@@ -73,8 +74,7 @@ const LoginView = () => {
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         console.log("statusCodes.PLAY_SERVICES_NOT_AVAILABLE");
       } else {
-        console.log("loginSuccess");
-        console.log(userInfo);
+        console.log(error);
       }
     }
   };
@@ -86,7 +86,10 @@ const LoginView = () => {
       await GoogleSignin.signOut();
       const loggedIn = false;
       setLoggedIn(loggedIn);
-      // this.setState({ user: null, loggedIn: false }); // Remember to remove the user from your app's state as well
+      const user = null;
+      setUser(user);
+      console.log("logout");
+      console.log(user);
     } catch (error) {
       console.error(error);
     }
@@ -122,7 +125,7 @@ const LoginView = () => {
         </View>
         <View>
           <Image title="googleProfileImage"></Image>
-          <Text>UserInfo</Text>
+          <Text>{user.name}</Text>
           <Text title="googleProfileName"></Text>
         </View>
       </CenteredView>
