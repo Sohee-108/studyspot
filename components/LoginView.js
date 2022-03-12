@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, Image } from "react-native";
+import { Text, Image, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components";
 import auth from "@react-native-firebase/auth";
@@ -18,7 +18,7 @@ const CenteredView = styled.View`
 `;
 
 const View = styled.View`
-  flex: 0.5;
+  flex: 0.3;
   align-items: center;
   justify-content: center;
 `;
@@ -42,7 +42,9 @@ const GoogleLoginButton = styled.TouchableOpacity`
 
 const LoginView = () => {
   const navigation = useNavigation();
-  const [user, setUser] = useState();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState([]);
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -54,14 +56,15 @@ const LoginView = () => {
     });
   }, []);
 
+  // Google 로그인
   const signIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      if (loggenIn == true) {
-        usre = userInfo;
-        setUser(user);
-      }
+      // this.setState({ userInfo: userInfo});
+      setUserInfo(userInfo);
+      const loggedIn = true;
+      setLoggedIn(loggedIn);
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log("statusCodes.SIGN_IN_CANCELLED");
@@ -70,39 +73,61 @@ const LoginView = () => {
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         console.log("statusCodes.PLAY_SERVICES_NOT_AVAILABLE");
       } else {
-        console.log("GoogleLoginSuccess");
+        console.log("loginSuccess");
+        console.log(userInfo);
       }
     }
   };
 
+  // Google 로그아웃
   const signOut = async () => {
     try {
       await GoogleSignin.revokeAccess();
       await GoogleSignin.signOut();
-      this.setState({ user: null, loggedIn: false }); // Remember to remove the user from your app's state as well
+      const loggedIn = false;
+      setLoggedIn(loggedIn);
+      // this.setState({ user: null, loggedIn: false }); // Remember to remove the user from your app's state as well
     } catch (error) {
       console.error(error);
     }
   };
 
-  return (
-    <CenteredView>
-      <View title="Logo">
-        <LogoImage
-          source={require("../assets/images/logo.png")}
-          style={{ resizeMode: "contain" }}
-        ></LogoImage>
-      </View>
-      <View>
-        <GoogleSigninButton onPress={signIn}></GoogleSigninButton>
-        {/* <Text style={{ fontSize: 15 }}>GooGle로그인</Text> */}
-      </View>
-      <View>
-        <Image title="googleProfileImage">{user}</Image>
-        <Text title="googleProfileName">{user}</Text>
-      </View>
-    </CenteredView>
-  );
+  if (loggedIn == false) {
+    return (
+      <CenteredView>
+        <View title="Logo">
+          <LogoImage
+            source={require("../assets/images/logo.png")}
+            style={{ resizeMode: "contain" }}
+          ></LogoImage>
+        </View>
+        <View>
+          <GoogleSigninButton onPress={signIn}></GoogleSigninButton>
+        </View>
+      </CenteredView>
+    );
+  } else if (loggedIn == true) {
+    return (
+      <CenteredView>
+        <View title="Logo">
+          <LogoImage
+            source={require("../assets/images/logo.png")}
+            style={{ resizeMode: "contain" }}
+          ></LogoImage>
+        </View>
+        <View>
+          <View>
+            <Button onPress={signOut} title="Signout" color="#841584"></Button>
+          </View>
+        </View>
+        <View>
+          <Image title="googleProfileImage"></Image>
+          <Text>UserInfo</Text>
+          <Text title="googleProfileName"></Text>
+        </View>
+      </CenteredView>
+    );
+  }
 };
 
 export default LoginView;
