@@ -14,9 +14,9 @@ const ChangeButton = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   border-radius: 70px;
-  width: 125px;
-  height: 125px;
-  margin: 30px;
+  width: 100px;
+  height: 100px;
+  margin: 5%;
 `;
 
 const CBText = styled.Text`

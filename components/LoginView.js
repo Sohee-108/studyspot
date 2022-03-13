@@ -55,7 +55,7 @@ const GoogleText = styled.Text`
 
 // #endregion
 
-const LoginView = () => {
+LoginView = () => {
   const navigation = useNavigation();
 
   const [loggedIn, setLoggedIn] = useState(false);

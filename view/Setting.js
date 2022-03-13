@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 
 // #region styled-component 부분
 
-const CenteredView = styled.View`
+const CenteredView = styled.SafeAreaView`
   flex: 1;
   align-items: center;
   justify-content: center;

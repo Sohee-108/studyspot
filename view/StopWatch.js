@@ -1,20 +1,20 @@
-import { map } from "lodash";
 import React, { useState } from "react";
-import { View, Text } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import { Stopwatch } from "react-native-stopwatch-timer";
 import styled from "styled-components";
+import { View, Text, Alert, Button } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
+import { Stopwatch } from "react-native-stopwatch-timer";
 
 // #region styled-component 부분
 
 const CenteredView = styled.SafeAreaView`
   flex: 1;
-  background-color: white;
   align-items: center;
   justify-content: center;
+  background-color: white;
 `;
 
 const StopwatchView = styled.View`
+  flex: 0.4;
   background-color: white;
   align-items: center;
   justify-content: center;
@@ -23,43 +23,38 @@ const StopwatchView = styled.View`
   padding-right: 100%;
 `;
 
+const WatchText = styled.Text`
+  position: absolute;
+  font-size: 13px;
+  color: #cbcbcb;
+  top: 85%;
+`;
+
 const ButtonView = styled.View`
   flex-direction: row;
 `;
 
-const SignButton = styled.TouchableOpacity`
-  border-width: 2px;
-  border-radius: 10px;
-  width: 140px;
-  height: 75px;
+const MenuButton = styled.TouchableOpacity`
+  border-width: 1px;
+  border-radius: 30px;
+  border-color: #313131;
+  width: 110px;
+  height: 65px;
   align-items: center;
   justify-content: center;
   margin: 8px;
 `;
 
-const SignText = styled.Text`
-  font-size: 40px;
-  font-family: "BMHANNAPro";
-`;
-
-const LapsButton = styled.TouchableOpacity`
-  border-width: 2px;
-  border-radius: 10px;
-  width: 100px;
-  height: 50px;
-  align-items: center;
-  justify-content: center;
-  margin: 8px;
-`;
-
-const LapsButtonText = styled.Text`
-  font-size: 30px;
-  font-family: "BMHANNAPro";
+const MenuText = styled.Text`
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 20px;
+  color: #313131;
 `;
 
 const LapsText = styled.Text`
   font-size: 40px;
-  font-family: "BMHANNAPro";
   line-height: 45px;
   letter-spacing: 1px;
   width: 175px;
@@ -68,25 +63,23 @@ const LapsText = styled.Text`
   margin-left: 25%;
 `;
 
+//StopWatch Styled Component
 const options = {
   container: {
     width: 340,
     height: 110,
-    borderRadius: 10,
-    borderWidth: 3,
     alignItems: "center",
     justifyContent: "center",
   },
   text: {
-    fontSize: 80,
-    fontFamily: "BMHANNAPro",
-    color: "black",
+    fontSize: 50,
+    color: "#313131",
   },
 };
 
 // #endregion
 
-const StopWatchAPI = ({}) => {
+function StopWatchAPI({}) {
   const [start, setStart] = useState(false);
   const [reset, setReset] = useState(false);
   const [laps, setLaps] = useState([]);
@@ -100,13 +93,18 @@ const StopWatchAPI = ({}) => {
   const resetStopwatch = () => {
     setStart(false);
     setReset(true);
+    lapsClear();
   };
 
   const lapsStopwatch = () => {
-    console.log("currentTime: ", currentTime);
-    laps.push(currentTime);
-    setLaps(laps);
-    console.log(laps);
+    if (start == "start" || currentTime == "00:00:00:000") {
+      console.log("스탑워치를 시작해주세요!");
+    } else {
+      console.log("currentTime: ", currentTime);
+      laps.push(currentTime);
+      setLaps(laps);
+      console.log(laps);
+    }
   };
 
   const lapsClear = () => {
@@ -114,11 +112,31 @@ const StopWatchAPI = ({}) => {
     console.log(laps);
   };
 
+  const DATA = [
+    {
+      id: "1",
+      title: laps[0],
+    },
+    {
+      id: "2",
+      title: laps[1],
+    },
+    {
+      id: "3",
+      title: laps[2],
+    },
+  ];
+
+  const Item = ({ title }) => <LapsText>{title}</LapsText>;
+
+  const renderItem = ({ item }) => <Item title={item.title} />;
+
   return (
     <CenteredView>
       <StopwatchView>
         <Stopwatch
-          laps={true}
+          laps
+          msecs
           start={start}
           reset={reset}
           options={options}
@@ -127,47 +145,46 @@ const StopWatchAPI = ({}) => {
               setCurrentTime(time);
             }
           }}
-        ></Stopwatch>
+        />
+        <WatchText style={{ left: 420 }}>hour</WatchText>
+        <WatchText style={{ left: 489 }}>minute</WatchText>
+        <WatchText style={{ left: 559 }}>second</WatchText>
+        <WatchText style={{ left: 632 }}>millisecond</WatchText>
       </StopwatchView>
-      <ButtonView>
-        <SignButton onPress={toggleStopwatch}>
-          <SignText>{!start ? "Start" : "Stop"}</SignText>
-        </SignButton>
-        <SignButton onPress={resetStopwatch}>
-          <SignText>Reset</SignText>
-        </SignButton>
-      </ButtonView>
-      <ButtonView>
-        <LapsButton onPress={lapsStopwatch}>
-          <LapsButtonText>Laps</LapsButtonText>
-        </LapsButton>
-        <LapsButton onPress={lapsClear}>
-          <LapsButtonText>Clear</LapsButtonText>
-        </LapsButton>
-      </ButtonView>
-      <Text style={{ fontSize: 15, fontFamily: "BMHANNAPro", padding: 15 }}>
-        기록
-      </Text>
 
-      <ScrollView
-        style={{
-          width: "100%",
-          backgroundColor: "white",
-          marginTop: 10,
-          marginBottom: 10,
-          paddingLeft: 20,
-          paddingRight: 20,
-        }}
-        contentContainerStyle={{
-          justifyContent: "center",
-          alignContent: "center",
-        }}
-        showsVerticalScrollIndicator={false}
-      >
-        <LapsText>{laps}</LapsText>
-      </ScrollView>
+      <ButtonView>
+        <MenuButton onPress={toggleStopwatch}>
+          <MenuText>{!start ? "Start" : "Stop"}</MenuText>
+        </MenuButton>
+        <MenuButton onPress={resetStopwatch}>
+          <MenuText>Reset</MenuText>
+        </MenuButton>
+      </ButtonView>
+      <ButtonView>
+        <MenuButton onPress={lapsStopwatch}>
+          <MenuText>Laps</MenuText>
+        </MenuButton>
+        <MenuButton onPress={lapsClear}>
+          <MenuText>Clear</MenuText>
+        </MenuButton>
+      </ButtonView>
+      <View style={{ flex: 1 }}>
+        <FlatList
+          style={{
+            borderWidth: 1,
+            width: 300,
+          }}
+          data={DATA}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
     </CenteredView>
   );
+}
+
+const StopWatch = () => {
+  return <StopWatchAPI></StopWatchAPI>;
 };
 
-export default StopWatchAPI;
+export default StopWatch;

@@ -11,9 +11,6 @@ const CenteredView = styled.View`
 `;
 
 const BackgroundImage = styled.Image`
-  position: absolute;
-  left: 25px;
-  top: 150px;
   width: 340px;
   height: 340px;
   opacity: 0.3;
@@ -21,7 +18,7 @@ const BackgroundImage = styled.Image`
 
 const SupportText = styled.Text`
   position: absolute;
-  top: 600px;
+  top: 80%;
   font-style: normal;
   font-size: 15px;
   line-height: 30px;
