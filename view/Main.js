@@ -1,75 +1,37 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { useNavigation } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import MainView from "../components/MainView";
 import StopWatch from "./StopWatch";
 import Schedule from "./Schedule";
 import Setting from "./Setting";
 import Support from "./Support";
 import Theme from "./Theme";
-import LoginView from "../components/LoginView";
 
 // #region styled-component 부분
-
-const CenteredView = styled.View`
-  flex: 1;
+const TabBarIcon = styled.Image`
   align-items: center;
   justify-content: center;
-`;
-
-const ProfileButton = styled.TouchableOpacity`
-  align-items: center;
+  width: 28px;
+  height: 28px;
 `;
 
 // #endregion
 
-const MainStack = createNativeStackNavigator();
+//설정화면 Stack
+const SettingsStack = createStackNavigator();
 
-const Main = () => {
-  const navigation = useNavigation();
-
-  const color = ["#E5D5C6", "#2478FF", "#FFDF24"]; //R, B, Y
-  var [currentColor, setCurrentColor] = useState(color[0]);
-
+function SettingsStackScreen() {
   return (
-    <MainStack.Navigator initialRouteName="StopWatch">
-      <MainStack.Screen
-        name="MainView"
-        component={MainView}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <MainStack.Screen
-        name="LoginView"
-        component={LoginView}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <MainStack.Screen
-        name="StopWatch"
-        component={StopWatch}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <MainStack.Screen
-        name="Schedule"
-        component={Schedule}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <MainStack.Screen
+    <SettingsStack.Navigator firstRoute="Settings">
+      <SettingsStack.Screen
         name="Setting"
         component={Setting}
         options={{
           title: "Settings",
           headerStyle: {
-            backgroundColor: currentColor,
+            backgroundColor: "#E5D5C6",
           },
           headerTitleStyle: {
             fontWeight: "bold",
@@ -80,30 +42,13 @@ const Main = () => {
           headerTintColor: "white",
         }}
       />
-      <MainStack.Screen
-        name="Support"
-        component={Support}
-        options={{
-          title: "Support",
-          headerStyle: {
-            backgroundColor: currentColor,
-          },
-          headerTitleStyle: {
-            fontWeight: "bold",
-            color: "white",
-          },
-          headerBackTitleVisible: false,
-          headerBackButtonMenuEnabled: false,
-          headerTintColor: "white",
-        }}
-      />
-      <MainStack.Screen
+      <SettingsStack.Screen
         name="Theme"
         component={Theme}
         options={{
           title: "Theme",
           headerStyle: {
-            backgroundColor: currentColor,
+            backgroundColor: "#E5D5C6",
           },
           headerTitleStyle: {
             fontWeight: "bold",
@@ -114,7 +59,74 @@ const Main = () => {
           headerTintColor: "white",
         }}
       />
-    </MainStack.Navigator>
+      <SettingsStack.Screen
+        name="Support"
+        component={Support}
+        options={{
+          title: "Support",
+          headerStyle: {
+            backgroundColor: "#E5D5C6",
+          },
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: "white",
+          },
+          headerBackTitleVisible: false,
+          headerBackButtonMenuEnabled: false,
+          headerTintColor: "white",
+        }}
+      />
+    </SettingsStack.Navigator>
+  );
+}
+
+const Main = () => {
+  const BottomTab = createBottomTabNavigator();
+
+  return (
+    <BottomTab.Navigator firstRoute="Menu">
+      <BottomTab.Screen
+        name="Schedule"
+        component={Schedule}
+        options={{
+          headerShown: false,
+          tabBarActiveTintColor: "#ffffff",
+          tabBarInactiveTintColor: "#313131",
+          tabBarStyle: { backgroundColor: "#E5D5C6" },
+          tabBarIcon: () => (
+            <TabBarIcon source={require("../assets/images/scheduleIcon.png")} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="StopWatch"
+        component={StopWatch}
+        options={{
+          headerShown: false,
+          tabBarActiveTintColor: "#ffffff",
+          tabBarInactiveTintColor: "#313131",
+          tabBarStyle: { backgroundColor: "#E5D5C6" },
+          tabBarIcon: () => (
+            <TabBarIcon
+              source={require("../assets/images/stopwatchIcon.png")}
+            />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="Settings"
+        component={SettingsStackScreen}
+        options={{
+          headerShown: false,
+          tabBarActiveTintColor: "#ffffff",
+          tabBarInactiveTintColor: "#313131",
+          tabBarStyle: { backgroundColor: "#E5D5C6" },
+          tabBarIcon: () => (
+            <TabBarIcon source={require("../assets/images/settingsIcon.png")} />
+          ),
+        }}
+      />
+    </BottomTab.Navigator>
   );
 };
 
