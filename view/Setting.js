@@ -1,50 +1,183 @@
 import React from "react";
-import { Text } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components";
+import { useNavigation } from "@react-navigation/native";
 
-const MenuBar = styled.TouchableOpacity`
+// #region styled-component 부분
+
+const CenteredView = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ProfileView = styled.View`
+  flex: 0.3;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 200px;
+  align-items: center;
+  background-color: #e5d5c6;
+`;
+
+const ProfileImage = styled.Image`
+  position: absolute;
+  top: 13px;
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;
+`;
+
+const ProfileName = styled.Text`
+  position: absolute;
+  top: 95px;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 17px;
+  line-height: 18px;
+  color: #313131;
+`;
+
+const ProfileEmail = styled.Text`
+  position: absolute;
+  top: 120px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #5c5c5c;
+`;
+
+const MenuView = styled.View`
+  flex: 0.7;
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  height: 80%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 20px;
+  background-color: white;
+`;
+
+const MenuButton = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 20px;
+  padding: 18px;
   border-bottom-width: 0.3px;
-  border-color: grey;
+  border-color: #aeaeae;
 `;
 
-const ArrowImage = styled.Image`
-  align-items: center;
-  justify-content: center;
-  width: 10px;
-  height: 20px;
+const MenuIcon = styled.Image`
+  width: 35px;
+  height: 35px;
 `;
 
 const MenuText = styled.Text`
   align-items: center;
   justify-content: center;
+  font-style: normal;
+  font-weight: 400;
   font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #313131;
 `;
+
+const ArrowIcon = styled.Image`
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+`;
+
+const LogoutButton = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+`;
+
+const LogoutIcon = styled.Image`
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+`;
+
+const LogoutText = styled.Text`
+  position: absolute;
+  top: 75%;
+  left: 13%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #4f4f4f;
+`;
+
+const VerText = styled.Text`
+  position: absolute;
+  top: 75%;
+  left: 80%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #aeaeae;
+`;
+
+// #endregion
 
 const Setting = () => {
   const navigation = useNavigation();
 
   return (
-    <ScrollView style={{ backgroundColor: "white" }}>
-      <MenuBar onPress={() => navigation.navigate("Theme")}>
-        <MenuText>테마</MenuText>
-        <ArrowImage source={require("../assets/images/arrow.png")}></ArrowImage>
-      </MenuBar>
-      <MenuBar onPress={() => navigation.navigate("QNA")}>
-        <MenuText>문의하기</MenuText>
-        <ArrowImage source={require("../assets/images/arrow.png")}></ArrowImage>
-      </MenuBar>
-      <MenuBar activeOpacity={1}>
-        <MenuText>버전정보</MenuText>
-        <Text style={{ color: "grey", fontSize: 17 }}>1.0</Text>
-      </MenuBar>
-    </ScrollView>
+    <CenteredView>
+      {/* 추후에 구글로그인 후 user를 통해 정보를 받아오는 방식으로 변경 */}
+      <ProfileView>
+        <ProfileImage
+          source={require("../assets/images/sky.jpeg")}
+        ></ProfileImage>
+        <ProfileName>소희</ProfileName>
+        <ProfileEmail>dnflwlqsh@gmail.com</ProfileEmail>
+      </ProfileView>
+
+      <MenuView>
+        <MenuButton onPress={() => navigation.navigate("Theme")}>
+          <MenuIcon
+            source={require("../assets/images/themeIcon.png")}
+          ></MenuIcon>
+          <MenuText>Theme</MenuText>
+          <ArrowIcon
+            source={require("../assets/images/arrowrightIcon.png")}
+          ></ArrowIcon>
+        </MenuButton>
+        <MenuButton onPress={() => navigation.navigate("Support")}>
+          <MenuIcon
+            source={require("../assets/images/supportIcon.png")}
+          ></MenuIcon>
+          <MenuText>Support</MenuText>
+          <ArrowIcon
+            source={require("../assets/images/arrowrightIcon.png")}
+          ></ArrowIcon>
+        </MenuButton>
+        <LogoutButton>
+          <LogoutIcon
+            source={require("../assets/images/logoutIcon.png")}
+          ></LogoutIcon>
+          <LogoutText>Logout</LogoutText>
+          <VerText>version 1.0</VerText>
+        </LogoutButton>
+      </MenuView>
+    </CenteredView>
   );
 };
 export default Setting;
