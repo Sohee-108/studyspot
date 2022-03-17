@@ -25,6 +25,29 @@ const AgendaView = styled.View`
   border-color: #313131;
 `;
 
+const EmptyView = styled.View`
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border-width: 0.7px;
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 90%;
+  height: 75px;
+  border-color: #313131;
+`;
+
+const EmptyText = styled.Text`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  color: #313131;
+`;
+
 const SceduleBtn = styled.TouchableOpacity`
   justify-content: center;
   padding: 10px;
@@ -75,24 +98,33 @@ const AddScheduleView = styled.View`
   justify-content: center;
 `;
 
-const AddText = styled.Text``;
 const AddButton2 = styled.TouchableOpacity`
-  width: 200px;
+  width: 150px;
   height: 50px;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  background-color: #8c8c8c;
+  border-radius: 20px;
+  background-color: #e5d5c6;
   margin-top: 10px;
+`;
+
+const AddText = styled.Text`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  color: #313131;
 `;
 
 const AddValue = styled.TextInput`
   background-color: white;
-  font-size: 20px;
+  font-size: 16px;
   width: 80%;
   height: 7%;
   border-radius: 30px;
-  padding: 15px;
+  padding: 5%;
+  padding-left: 15%;
   margin-bottom: 30px;
 `;
 
@@ -219,10 +251,6 @@ const Schedule = () => {
   return (
     <CalendarView>
       <Agenda
-        // 의제에 표시되어야 하는 항목의 목록입니다. 항목을 빈 날짜로 렌더링하려면
-        // 날짜 키의 값은 빈 배열 []이어야 합니다. 날짜 키에 대한 값이 없으면
-        // 해당 날짜가 아직 로드되지 않은 것으로 간주됩니다.
-
         theme={{
           selectedDayBackgroundColor: "#8C8C8C",
           selectedDayTextColor: "white",
@@ -251,21 +279,15 @@ const Schedule = () => {
             </AgendaView>
           );
         }}
-        // Specify how each date should be rendered. day can be undefined if the item is not first in that day
-        // renderDay={(day, item) => {
-        //   return (
-        //     <View>
-        //       <Text>hi</Text>
-        //     </View>
-        //   );
-        // }}
-        // Specify how empty date content with no items should be rendered
-        renderEmptyDate={() => {
-          return <AgendaView />;
-        }}
-        // Specify what should be rendered instead of ActivityIndicator
+        // 날짜, 데이터 모두 없을 때 빈화면 로딩
         renderEmptyData={() => {
-          return <AgendaView />;
+          return (
+            <EmptyView>
+              <EmptyText>
+                일정이 없습니다. {"\n"}새로운 일정을 추가해보세요.
+              </EmptyText>
+            </EmptyView>
+          );
         }}
       />
 
@@ -278,24 +300,23 @@ const Schedule = () => {
         <Modal isVisible={isModalVisible}>
           <AddScheduleView>
             <AddValue
-              placeholder="날짜를 입력하세요. ex)2021-05-13"
+              placeholder="날짜 ex)2021-05-13"
               value={day}
               onChangeText={setDay}
             ></AddValue>
-            {/* <TouchableOpacity style={{backgroundColor:'black'}} onPress={MinCalendar}><Text>달력</Text></TouchableOpacity> */}
             <AddValue
-              placeholder="시간을 입력하세요. ex)17:00~20:00"
+              placeholder="일정시간 ex)17:00~20:00"
               value={time}
               onChangeText={setTime}
             ></AddValue>
             <AddValue
-              placeholder="일정명을 입력하세요."
+              placeholder="일정이름"
               title="name"
               value={name}
               onChangeText={setName}
             ></AddValue>
             <AddValue
-              placeholder="일정내용을 입력하세요."
+              placeholder="일정내용"
               value={content}
               onChangeText={setContent}
             ></AddValue>
