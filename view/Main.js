@@ -8,6 +8,7 @@ import Schedule from "./Schedule";
 import Setting from "./Setting";
 import Support from "./Support";
 import Theme from "./Theme";
+import LoginView from "../components/LoginView";
 
 // #region styled-component 부분
 const TabBarIcon = styled.Image`
@@ -22,7 +23,7 @@ const TabBarIcon = styled.Image`
 //설정화면 Stack
 const SettingsStack = createStackNavigator();
 
-function SettingsStackScreen() {
+const SettingsStackScreen = () => {
   return (
     <SettingsStack.Navigator firstRoute="Settings">
       <SettingsStack.Screen
@@ -78,7 +79,7 @@ function SettingsStackScreen() {
       />
     </SettingsStack.Navigator>
   );
-}
+};
 
 const Main = () => {
   const BottomTab = createBottomTabNavigator();

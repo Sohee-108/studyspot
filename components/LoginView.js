@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Button, Text, Image } from "react-native";
 import styled from "styled-components";
 import { useNavigation } from "@react-navigation/native";
 import {
@@ -61,6 +62,7 @@ LoginView = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userName, setUserName] = useState();
   const [userImage, setUserImage] = useState();
+  const [authStatus, setAuthStatus] = useState(false);
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -70,6 +72,7 @@ LoginView = () => {
       hostedDomain: "",
       forceConsentPrompt: true,
     });
+    getAuthStatus();
   }, []);
 
   // Google 로그인
@@ -79,10 +82,11 @@ LoginView = () => {
       const userInfo = await GoogleSignin.signIn();
       const userName = userInfo.user.name;
       const userImage = userInfo.user.photo;
+      const loggedIn = true;
       setUserName(userName);
       setUserImage(userImage);
-      const loggedIn = true;
       setLoggedIn(loggedIn);
+      AuthLogin();
       console.log("login");
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -97,6 +101,18 @@ LoginView = () => {
     }
   };
 
+  //로그인 상태 저장
+  AuthLogin = async () => {
+    try {
+      const authStatus = "true";
+      setAuthStatus(authStatus);
+      await AsyncStorage.setItem("@auth_key", authStatus);
+      console.log(authStatus);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   // Google 로그아웃
   const signOut = async () => {
     try {
@@ -108,13 +124,39 @@ LoginView = () => {
       const userImage = null;
       setUserName(userName);
       setUserImage(userImage);
+      AuthLogout();
       console.log("logout");
     } catch (error) {
       console.error(error);
     }
   };
 
-  if (loggedIn == false) {
+  //로그아웃 상태 저장
+  AuthLogout = async () => {
+    try {
+      const authStatus = "false";
+      setAuthStatus(authStatus);
+      await AsyncStorage.setItem("@auth_key", authStatus);
+      console.log(authStatus);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //로그인 상태 가져오기
+  const getAuthStatus = async () => {
+    try {
+      const value = await AsyncStorage.getItem("@auth_key");
+      if (value !== null) {
+        setAuthStatus(JSON.parse(value));
+      }
+    } catch (e) {
+      // error reading value
+      console.log("err: " + e);
+    }
+  };
+
+  if (authStatus == false) {
     return (
       <CenteredView>
         <View title="Logo">
@@ -131,33 +173,32 @@ LoginView = () => {
         </View>
       </CenteredView>
     );
+  } else if (authStatus == true) {
+    return (
+      <CenteredView>
+        <View title="Logo">
+          <LogoImage
+            source={require("../assets/images/logo.png")}
+            style={{ resizeMode: "contain" }}
+          ></LogoImage>
+        </View>
+        <View>
+          <View>
+            <Button onPress={signOut} title="Signout" color="#841584"></Button>
+          </View>
+        </View>
+        <View>
+          <Image
+            title="googleProfileImage"
+            source={{ uri: userImage }}
+            style={{ width: 200, height: 200 }}
+          ></Image>
+          <Text>{userName} 님 환영합니다</Text>
+          <Text title="googleProfileName"></Text>
+        </View>
+      </CenteredView>
+    );
   }
-  // else if (loggedIn == true) {
-  //   return (
-  //     <CenteredView>
-  //       <View title="Logo">
-  //         <LogoImage
-  //           source={require("../assets/images/logo.png")}
-  //           style={{ resizeMode: "contain" }}
-  //         ></LogoImage>
-  //       </View>
-  //       <View>
-  //         <View>
-  //           <Button onPress={signOut} title="Signout" color="#841584"></Button>
-  //         </View>
-  //       </View>
-  //       <View>
-  //         <Image
-  //           title="googleProfileImage"
-  //           source={{ uri: userImage }}
-  //           style={{ width: 200, height: 200 }}
-  //         ></Image>
-  //         <Text>{userName} 님 환영합니다</Text>
-  //         <Text title="googleProfileName"></Text>
-  //       </View>
-  //     </CenteredView>
-  //   );
-  // }
 };
 
 export default LoginView;

@@ -1,22 +1,22 @@
-import 'react-native-gesture-handler';
-import { registerRootComponent } from 'expo';
+import "react-native-gesture-handler";
+import { registerRootComponent } from "expo";
 import { Navigation } from "react-native-navigation";
 
-import App from './App';
-Navigation.registerComponent('com.myApp.WelcomeScreen', () => App);
+import App from "./App";
+Navigation.registerComponent("com.myApp.WelcomeScreen", () => App);
 Navigation.events().registerAppLaunchedListener(() => {
-   Navigation.setRoot({
-     root: {
-       stack: {
-         children: [
-           {
-             component: {
-               name: 'com.myApp.WelcomeScreen'
-             }
-           }
-         ]
-       }
-     }
+  Navigation.setRoot({
+    root: {
+      stack: {
+        children: [
+          {
+            component: {
+              name: "com.myApp.WelcomeScreen",
+            },
+          },
+        ],
+      },
+    },
   });
 });
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);

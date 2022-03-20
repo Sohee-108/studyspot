@@ -1,27 +1,30 @@
 import React from "react";
-
-import Main from "./view/Main";
-
 // react-navigation 모듈
+import { ThemeProvider } from "styled-components";
+import { createSwitchNavigator } from "react-navigation";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-/* import {Fonts} from './src/Fonts'; */
+import Main from "./view/Main";
 
-const Stack = createNativeStackNavigator();
+const Home = createNativeStackNavigator();
+
+const theme = {};
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{ headerBlurEffect: "light", headerTransparent: true }}
-      >
-        <Stack.Screen
-          name="Main"
-          component={Main}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>
+        <Home.Navigator
+          screenOptions={{ headerBlurEffect: "light", headerTransparent: true }}
+        >
+          <Home.Screen
+            name="Main"
+            component={Main}
+            options={{ headerShown: false }}
+          />
+        </Home.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }

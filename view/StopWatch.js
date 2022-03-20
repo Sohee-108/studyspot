@@ -79,7 +79,7 @@ const options = {
 
 // #endregion
 
-function StopWatchAPI({}) {
+function StopWatchAPI() {
   const [start, setStart] = useState(false);
   const [reset, setReset] = useState(false);
   const [laps, setLaps] = useState([]);
