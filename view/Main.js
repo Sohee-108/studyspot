@@ -80,35 +80,6 @@ const Main = () => {
   return (
     <BottomTab.Navigator firstRoute="Menu">
       <BottomTab.Screen
-        name="Schedule"
-        component={Schedule}
-        options={
-          isLight
-            ? {
-                headerShown: false,
-                tabBarActiveTintColor: "#ffffff",
-                tabBarInactiveTintColor: "#313131",
-                tabBarStyle: { backgroundColor: "#E5D5C6" },
-                tabBarIcon: () => (
-                  <TabBarIcon
-                    source={require("../assets/images/icon/lightmode/scheduleBlack.png")}
-                  />
-                ),
-              }
-            : {
-                headerShown: false,
-                tabBarActiveTintColor: "#ffffff",
-                tabBarInactiveTintColor: "#313131",
-                tabBarStyle: { backgroundColor: "#E5D5C6" },
-                tabBarIcon: () => (
-                  <TabBarIcon
-                    source={require("../assets/images/icon/darkmode/scheduleWhite.png")}
-                  />
-                ),
-              }
-        }
-      />
-      <BottomTab.Screen
         name="StopWatch"
         component={StopWatch}
         options={
@@ -137,6 +108,37 @@ const Main = () => {
               }
         }
       />
+
+      <BottomTab.Screen
+        name="Schedule"
+        component={Schedule}
+        options={
+          isLight
+            ? {
+                headerShown: false,
+                tabBarActiveTintColor: "#ffffff",
+                tabBarInactiveTintColor: "#313131",
+                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarIcon: () => (
+                  <TabBarIcon
+                    source={require("../assets/images/icon/lightmode/scheduleBlack.png")}
+                  />
+                ),
+              }
+            : {
+                headerShown: false,
+                tabBarActiveTintColor: "#ffffff",
+                tabBarInactiveTintColor: "#313131",
+                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarIcon: () => (
+                  <TabBarIcon
+                    source={require("../assets/images/icon/darkmode/scheduleWhite.png")}
+                  />
+                ),
+              }
+        }
+      />
+
       <BottomTab.Screen
         name="Settings"
         component={SettingsStackScreen}
