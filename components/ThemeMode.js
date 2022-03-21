@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+/**
+ * 다크 모드 */
 export const darkTheme = {
   //Common Color
   backgroundColor: "#BDBDBD",
@@ -17,6 +19,8 @@ export const darkTheme = {
   gray4: "#aeaeae", //Setting.js version Text Color
 };
 
+/**
+ * 라이트 모드 */
 export const lightTheme = {
   //Common Color
   backgroundColor: "white",
