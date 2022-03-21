@@ -14,14 +14,14 @@ const CenteredView = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const View = styled.View`
   flex: 0.3;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const LogoImage = styled.Image`
@@ -36,7 +36,7 @@ const GoogleSigninButton = styled.TouchableOpacity`
   flex-direction: row;
   width: 347px;
   height: 61px;
-  border-color: #bbbbbb;
+  border-color: ${(props) => props.theme.loginButtonColor};
   border-width: 3px;
   border-radius: 5px;
 `;
@@ -51,7 +51,7 @@ const GoogleText = styled.Text`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  color: #313131;
+  color: ${(props) => props.theme.textColor};
 `;
 
 // #endregion

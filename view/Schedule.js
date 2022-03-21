@@ -9,11 +9,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const CalendarView = styled.SafeAreaView`
   flex: 1;
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const AgendaView = styled.View`
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundColor};
   justify-content: center;
   align-items: flex-start;
   width: 90%;
@@ -22,11 +22,11 @@ const AgendaView = styled.View`
   margin-top: 5%;
   border-radius: 30px;
   border-width: 0.7px;
-  border-color: #313131;
+  border-color: ${(props) => props.theme.textColor};
 `;
 
 const EmptyView = styled.View`
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundColor};
   justify-content: center;
   align-items: center;
   border-radius: 30px;
@@ -35,7 +35,7 @@ const EmptyView = styled.View`
   margin-left: 5%;
   width: 90%;
   height: 75px;
-  border-color: #313131;
+  border-color: ${(props) => props.theme.textColor};
 `;
 
 const EmptyText = styled.Text`
@@ -45,7 +45,7 @@ const EmptyText = styled.Text`
   text-align: center;
   line-height: 20px;
   letter-spacing: 0.5px;
-  color: #313131;
+  color: ${(props) => props.theme.textColor};
 `;
 
 const SceduleBtn = styled.TouchableOpacity`
@@ -59,7 +59,7 @@ const ScheduleTitle = styled.Text`
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.5px;
-  color: #313131;
+  color: ${(props) => props.theme.textColor};
 `;
 
 const ScheduleContent = styled.Text`
@@ -70,7 +70,7 @@ const ScheduleContent = styled.Text`
   font-size: 13px;
   line-height: 20px;
   letter-spacing: 0.5px;
-  color: #313131;
+  color: ${(props) => props.theme.textColor};
 `;
 
 const ButtonView = styled.View`
@@ -104,7 +104,7 @@ const AddButton2 = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background-color: #e5d5c6;
+  background-color: ${(props) => props.theme.basicColor};
   margin-top: 10px;
 `;
 
@@ -114,11 +114,11 @@ const AddText = styled.Text`
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.5px;
-  color: #313131;
+  color: ${(props) => props.theme.textColor};
 `;
 
 const AddValue = styled.TextInput`
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundColor};
   font-size: 16px;
   width: 80%;
   height: 7%;

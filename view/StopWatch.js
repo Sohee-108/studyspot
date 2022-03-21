@@ -10,12 +10,12 @@ const CenteredView = styled.SafeAreaView`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const StopwatchView = styled.View`
   flex: 0.4;
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundColor};
   align-items: center;
   justify-content: center;
   padding: 5%;
@@ -37,7 +37,7 @@ const ButtonView = styled.View`
 const MenuButton = styled.TouchableOpacity`
   border-width: 1px;
   border-radius: 30px;
-  border-color: #313131;
+  border-color: ${(props) => props.theme.textColor};
   width: 110px;
   height: 65px;
   align-items: center;
@@ -50,7 +50,7 @@ const MenuText = styled.Text`
   font-weight: 300;
   font-size: 18px;
   line-height: 20px;
-  color: #313131;
+  color: ${(props) => props.theme.textColor};
 `;
 
 const LapsText = styled.Text`
@@ -73,7 +73,7 @@ const options = {
   },
   text: {
     fontSize: 50,
-    color: "#313131",
+    color: (props) => props.theme.textColor,
   },
 };
 

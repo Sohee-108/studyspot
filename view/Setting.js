@@ -17,7 +17,7 @@ const ProfileView = styled.View`
   width: 100%;
   height: 200px;
   align-items: center;
-  background-color: #e5d5c6;
+  background-color: ${(props) => props.theme.basicColor};
 `;
 
 const ProfileImage = styled.Image`
@@ -35,7 +35,7 @@ const ProfileName = styled.Text`
   font-weight: 800;
   font-size: 17px;
   line-height: 18px;
-  color: #313131;
+  color: ${(props) => props.theme.textColor};
 `;
 
 const ProfileEmail = styled.Text`
@@ -45,7 +45,7 @@ const ProfileEmail = styled.Text`
   font-weight: 500;
   font-size: 10px;
   line-height: 12px;
-  color: #5c5c5c;
+  color: ${(props) => props.theme.gray1};
 `;
 
 const MenuView = styled.View`
@@ -57,7 +57,7 @@ const MenuView = styled.View`
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   padding: 20px;
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const MenuButton = styled.TouchableOpacity`
@@ -67,7 +67,7 @@ const MenuButton = styled.TouchableOpacity`
   width: 100%;
   padding: 18px;
   border-bottom-width: 0.3px;
-  border-color: #aeaeae;
+  border-color: ${(props) => props.theme.gray2};
 `;
 
 const MenuIcon = styled.Image`
@@ -84,7 +84,7 @@ const MenuText = styled.Text`
   line-height: 20px;
   text-align: center;
   letter-spacing: 0.5px;
-  color: #313131;
+  color: ${(props) => props.theme.textColor};
 `;
 
 const ArrowIcon = styled.Image`
@@ -118,7 +118,7 @@ const LogoutText = styled.Text`
   line-height: 20px;
   text-align: center;
   letter-spacing: 0.5px;
-  color: #4f4f4f;
+  color: ${(props) => props.theme.gray3};
 `;
 
 const VerText = styled.Text`
@@ -131,7 +131,7 @@ const VerText = styled.Text`
   line-height: 20px;
   text-align: center;
   letter-spacing: 0.5px;
-  color: #aeaeae;
+  color: ${(props) => props.theme.gray4};
 `;
 
 // #endregion

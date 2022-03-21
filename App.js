@@ -7,9 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Main from "./view/Main";
-import Test from "./view/Test";
-import { darkTheme } from "./components/theme/darkTheme";
-import { lightTheme } from "./components/theme/lightTheme";
+import { darkTheme, lightTheme } from "./components/ThemeMode";
 
 const Home = createNativeStackNavigator();
 
@@ -24,7 +22,7 @@ export default function App() {
         >
           <Home.Screen
             name="Main"
-            component={Test}
+            component={Main}
             options={{ headerShown: false }}
           />
         </Home.Navigator>

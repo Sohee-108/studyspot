@@ -17,7 +17,6 @@ const TabBarIcon = styled.Image`
   width: 28px;
   height: 28px;
 `;
-
 // #endregion
 
 //설정화면 Stack

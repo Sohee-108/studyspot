@@ -7,7 +7,7 @@ const CenteredView = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: ${(props) => props.theme.backgroundColor};
 `;
 
 const BackgroundImage = styled.Image`
@@ -24,7 +24,7 @@ const SupportText = styled.Text`
   line-height: 30px;
   text-align: center;
   letter-spacing: 0.5px;
-  color: #313131;
+  color: ${(props) => props.theme.textColor};
 `;
 
 // #endregion
