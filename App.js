@@ -1,5 +1,5 @@
 import React from "react";
-import { useColorScheme, View, Text, SafeAreaView } from "react-native";
+import { useColorScheme } from "react-native";
 // react-navigation 모듈
 import { ThemeProvider } from "styled-components";
 import { createSwitchNavigator } from "react-navigation";

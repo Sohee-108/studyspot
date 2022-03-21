@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { View, Text, Alert, Button } from "react-native";
+import { View, useColorScheme } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import { Stopwatch } from "react-native-stopwatch-timer";
 
@@ -26,7 +26,7 @@ const StopwatchView = styled.View`
 const WatchText = styled.Text`
   position: absolute;
   font-size: 13px;
-  color: #cbcbcb;
+  color: ${(props) => props.theme.watchTextColor};
   top: 85%;
 `;
 
@@ -63,8 +63,8 @@ const LapsText = styled.Text`
   margin-left: 25%;
 `;
 
-//StopWatch Styled Component
-const options = {
+//StopWatch Style Component
+const lightoptions = {
   container: {
     width: 340,
     height: 110,
@@ -73,13 +73,27 @@ const options = {
   },
   text: {
     fontSize: 50,
-    color: (props) => props.theme.textColor,
+    color: "#313131",
   },
 };
 
+const darkoptions = {
+  container: {
+    width: 340,
+    height: 110,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  text: {
+    fontSize: 50,
+    color: "#ffffff",
+  },
+};
 // #endregion
 
 function StopWatchAPI() {
+  const isLight = useColorScheme() === "light";
+
   const [start, setStart] = useState(false);
   const [reset, setReset] = useState(false);
   const [laps, setLaps] = useState([]);
@@ -139,7 +153,7 @@ function StopWatchAPI() {
           msecs
           start={start}
           reset={reset}
-          options={options}
+          options={isLight ? lightoptions : darkoptions}
           getTime={(time) => {
             if (time != currentTime) {
               setCurrentTime(time);

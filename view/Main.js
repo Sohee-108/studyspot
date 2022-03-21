@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useColorScheme } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -17,64 +18,56 @@ const TabBarIcon = styled.Image`
   width: 28px;
   height: 28px;
 `;
+
+const settingLightOptions = {
+  headerStyle: {
+    backgroundColor: "#E5D5C6",
+  },
+  headerTitleStyle: {
+    fontWeight: "bold",
+    color: "#ffffff",
+  },
+  headerBackTitleVisible: false,
+  headerBackButtonMenuEnabled: false,
+  headerTintColor: "#ffffff",
+};
+
+const settingDarkOptions = {
+  headerStyle: {
+    backgroundColor: "#E5D5C6",
+  },
+  headerTitleStyle: {
+    fontWeight: "bold",
+    color: "#000000",
+  },
+  headerBackTitleVisible: false,
+  headerBackButtonMenuEnabled: false,
+  headerTintColor: "#000000",
+};
+
 // #endregion
 
 //설정화면 Stack
 const SettingsStack = createStackNavigator();
 
 const SettingsStackScreen = () => {
+  const isLight = useColorScheme() === "light";
   return (
     <SettingsStack.Navigator firstRoute="Settings">
       <SettingsStack.Screen
         name="Setting"
         component={Setting}
-        options={{
-          title: "Settings",
-          headerStyle: {
-            backgroundColor: "#E5D5C6",
-          },
-          headerTitleStyle: {
-            fontWeight: "bold",
-            color: "white",
-          },
-          headerBackTitleVisible: false,
-          headerBackButtonMenuEnabled: false,
-          headerTintColor: "white",
-        }}
+        options={isLight ? settingLightOptions : settingDarkOptions}
       />
       <SettingsStack.Screen
         name="Theme"
         component={Theme}
-        options={{
-          title: "Theme",
-          headerStyle: {
-            backgroundColor: "#E5D5C6",
-          },
-          headerTitleStyle: {
-            fontWeight: "bold",
-            color: "white",
-          },
-          headerBackTitleVisible: false,
-          headerBackButtonMenuEnabled: false,
-          headerTintColor: "white",
-        }}
+        options={isLight ? settingLightOptions : settingDarkOptions}
       />
       <SettingsStack.Screen
         name="Support"
         component={Support}
-        options={{
-          title: "Support",
-          headerStyle: {
-            backgroundColor: "#E5D5C6",
-          },
-          headerTitleStyle: {
-            fontWeight: "bold",
-            color: "white",
-          },
-          headerBackTitleVisible: false,
-          headerBackButtonMenuEnabled: false,
-          headerTintColor: "white",
-        }}
+        options={isLight ? settingLightOptions : settingDarkOptions}
       />
     </SettingsStack.Navigator>
   );
@@ -82,49 +75,96 @@ const SettingsStackScreen = () => {
 
 const Main = () => {
   const BottomTab = createBottomTabNavigator();
+  const isLight = useColorScheme() === "light";
 
   return (
     <BottomTab.Navigator firstRoute="Menu">
       <BottomTab.Screen
         name="Schedule"
         component={Schedule}
-        options={{
-          headerShown: false,
-          tabBarActiveTintColor: "#ffffff",
-          tabBarInactiveTintColor: "#313131",
-          tabBarStyle: { backgroundColor: "#E5D5C6" },
-          tabBarIcon: () => (
-            <TabBarIcon source={require("../assets/images/scheduleIcon.png")} />
-          ),
-        }}
+        options={
+          isLight
+            ? {
+                headerShown: false,
+                tabBarActiveTintColor: "#ffffff",
+                tabBarInactiveTintColor: "#313131",
+                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarIcon: () => (
+                  <TabBarIcon
+                    source={require("../assets/images/icon/lightmode/scheduleBlack.png")}
+                  />
+                ),
+              }
+            : {
+                headerShown: false,
+                tabBarActiveTintColor: "#ffffff",
+                tabBarInactiveTintColor: "#313131",
+                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarIcon: () => (
+                  <TabBarIcon
+                    source={require("../assets/images/icon/darkmode/scheduleWhite.png")}
+                  />
+                ),
+              }
+        }
       />
       <BottomTab.Screen
         name="StopWatch"
         component={StopWatch}
-        options={{
-          headerShown: false,
-          tabBarActiveTintColor: "#ffffff",
-          tabBarInactiveTintColor: "#313131",
-          tabBarStyle: { backgroundColor: "#E5D5C6" },
-          tabBarIcon: () => (
-            <TabBarIcon
-              source={require("../assets/images/stopwatchIcon.png")}
-            />
-          ),
-        }}
+        options={
+          isLight
+            ? {
+                headerShown: false,
+                tabBarActiveTintColor: "#ffffff",
+                tabBarInactiveTintColor: "#313131",
+                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarIcon: () => (
+                  <TabBarIcon
+                    source={require("../assets/images/icon/lightmode/stopwatchBlack.png")}
+                  />
+                ),
+              }
+            : {
+                headerShown: false,
+                tabBarActiveTintColor: "#ffffff",
+                tabBarInactiveTintColor: "#313131",
+                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarIcon: () => (
+                  <TabBarIcon
+                    source={require("../assets/images/icon/darkmode/stopwatchWhite.png")}
+                  />
+                ),
+              }
+        }
       />
       <BottomTab.Screen
         name="Settings"
         component={SettingsStackScreen}
-        options={{
-          headerShown: false,
-          tabBarActiveTintColor: "#ffffff",
-          tabBarInactiveTintColor: "#313131",
-          tabBarStyle: { backgroundColor: "#E5D5C6" },
-          tabBarIcon: () => (
-            <TabBarIcon source={require("../assets/images/settingsIcon.png")} />
-          ),
-        }}
+        options={
+          isLight
+            ? {
+                headerShown: false,
+                tabBarActiveTintColor: "#ffffff",
+                tabBarInactiveTintColor: "#313131",
+                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarIcon: () => (
+                  <TabBarIcon
+                    source={require("../assets/images/icon/lightmode/settingsBlack.png")}
+                  />
+                ),
+              }
+            : {
+                headerShown: false,
+                tabBarActiveTintColor: "#ffffff",
+                tabBarInactiveTintColor: "#313131",
+                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarIcon: () => (
+                  <TabBarIcon
+                    source={require("../assets/images/icon/darkmode/settingsWhite.png")}
+                  />
+                ),
+              }
+        }
       />
     </BottomTab.Navigator>
   );

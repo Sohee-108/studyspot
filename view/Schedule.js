@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Alert } from "react-native";
+import { Alert, useColorScheme } from "react-native";
 import styled from "styled-components";
 import { Agenda } from "react-native-calendars";
 import Modal from "react-native-modal";
@@ -73,14 +73,12 @@ const ScheduleContent = styled.Text`
   color: ${(props) => props.theme.textColor};
 `;
 
-const ButtonView = styled.View`
-  align-items: flex-end;
-  margin-right: 20px;
-`;
-
 const AddButton1 = styled.TouchableOpacity`
+  position: absolute;
   width: 70px;
   height: 50px;
+  left: 72%;
+  top: 92%;
   align-items: center;
   justify-content: center;
   margin-right: 5%;
@@ -126,6 +124,7 @@ const AddValue = styled.TextInput`
   padding: 5%;
   padding-left: 15%;
   margin-bottom: 30px;
+  color: ${(props) => props.theme.textColor};
 `;
 
 // #endregion
@@ -248,20 +247,39 @@ const Schedule = () => {
     }
   };
 
+  const isLight = useColorScheme() === "light";
+
   return (
     <CalendarView>
       <Agenda
-        theme={{
-          selectedDayBackgroundColor: "#8C8C8C",
-          selectedDayTextColor: "white",
-          todayTextColor: "#8C8C8C",
-          dotColor: "#8C8C8C",
-          agendaDayTextColor: "#8C8C8C",
-          agendaDayNumColor: "#8C8C8C",
-          agendaTodayColor: "#8C8C8C",
-          agendaKnobColor: "#8C8C8C",
-          backgroundColor: "#ffffff",
-        }}
+        style={{ width: "100%", height: "100%" }}
+        theme={
+          isLight
+            ? {
+                calendarBackground: "#ffffff",
+                selectedDayBackgroundColor: "#8C8C8C",
+                selectedDayTextColor: "#ffffff",
+                todayTextColor: "#8C8C8C",
+                dotColor: "#8C8C8C",
+                agendaDayTextColor: "#8C8C8C",
+                agendaDayNumColor: "#8C8C8C",
+                agendaTodayColor: "#8C8C8C",
+                agendaKnobColor: "#8C8C8C",
+                backgroundColor: "#ffffff",
+              }
+            : {
+                calendarBackground: "#353535",
+                selectedDayBackgroundColor: "#8C8C8C",
+                selectedDayTextColor: "#ffffff",
+                todayTextColor: "#8C8C8C",
+                dotColor: "#8C8C8C",
+                agendaDayTextColor: "#8C8C8C",
+                agendaDayNumColor: "#8C8C8C",
+                agendaTodayColor: "#8C8C8C",
+                agendaKnobColor: "#8C8C8C",
+                backgroundColor: "#353535",
+              }
+        }
         showClosingKnob={true}
         items={scheduleList}
         onDayChange={(day) => {
@@ -290,50 +308,51 @@ const Schedule = () => {
           );
         }}
       />
-
-      <ButtonView>
-        <AddButton1 onPress={toggleModal}>
-          <AddImage
-            source={require("../assets/images/addscheduleIcon.png")}
-          ></AddImage>
-        </AddButton1>
-        <Modal isVisible={isModalVisible}>
-          <AddScheduleView>
-            <AddValue
-              placeholder="날짜 ex)2021-05-13"
-              value={day}
-              onChangeText={setDay}
-            ></AddValue>
-            <AddValue
-              placeholder="일정시간 ex)17:00~20:00"
-              value={time}
-              onChangeText={setTime}
-            ></AddValue>
-            <AddValue
-              placeholder="일정이름"
-              title="name"
-              value={name}
-              onChangeText={setName}
-            ></AddValue>
-            <AddValue
-              placeholder="일정내용"
-              value={content}
-              onChangeText={setContent}
-            ></AddValue>
-            <AddButton2
-              title="add"
-              onPress={() => {
-                addSchedule();
-              }}
-            >
-              <AddText>일정 추가</AddText>
-            </AddButton2>
-            <AddButton2 title="back" onPress={toggleModal}>
-              <AddText>취소</AddText>
-            </AddButton2>
-          </AddScheduleView>
-        </Modal>
-      </ButtonView>
+      <AddButton1 onPress={toggleModal}>
+        <AddImage
+          source={
+            isLight
+              ? require("../assets/images/icon/lightmode/addBlack.png")
+              : require("../assets/images/icon/darkmode/addWhite.png")
+          }
+        ></AddImage>
+      </AddButton1>
+      <Modal isVisible={isModalVisible}>
+        <AddScheduleView>
+          <AddValue
+            placeholder="날짜 ex)2021-05-13"
+            value={day}
+            onChangeText={setDay}
+          ></AddValue>
+          <AddValue
+            placeholder="일정시간 ex)17:00~20:00"
+            value={time}
+            onChangeText={setTime}
+          ></AddValue>
+          <AddValue
+            placeholder="일정이름"
+            title="name"
+            value={name}
+            onChangeText={setName}
+          ></AddValue>
+          <AddValue
+            placeholder="일정내용"
+            value={content}
+            onChangeText={setContent}
+          ></AddValue>
+          <AddButton2
+            title="add"
+            onPress={() => {
+              addSchedule();
+            }}
+          >
+            <AddText>일정 추가</AddText>
+          </AddButton2>
+          <AddButton2 title="back" onPress={toggleModal}>
+            <AddText>취소</AddText>
+          </AddButton2>
+        </AddScheduleView>
+      </Modal>
     </CalendarView>
   );
 };

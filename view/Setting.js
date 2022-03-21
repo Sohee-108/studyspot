@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useColorScheme } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // #region styled-component 부분
@@ -45,7 +46,7 @@ const ProfileEmail = styled.Text`
   font-weight: 500;
   font-size: 10px;
   line-height: 12px;
-  color: ${(props) => props.theme.gray1};
+  color: ${(props) => props.theme.emailText};
 `;
 
 const MenuView = styled.View`
@@ -67,7 +68,7 @@ const MenuButton = styled.TouchableOpacity`
   width: 100%;
   padding: 18px;
   border-bottom-width: 0.3px;
-  border-color: ${(props) => props.theme.gray2};
+  border-color: ${(props) => props.theme.menuBorderBottom};
 `;
 
 const MenuIcon = styled.Image`
@@ -84,7 +85,7 @@ const MenuText = styled.Text`
   line-height: 20px;
   text-align: center;
   letter-spacing: 0.5px;
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.menuText};
 `;
 
 const ArrowIcon = styled.Image`
@@ -118,7 +119,7 @@ const LogoutText = styled.Text`
   line-height: 20px;
   text-align: center;
   letter-spacing: 0.5px;
-  color: ${(props) => props.theme.gray3};
+  color: ${(props) => props.theme.logoutButtonText};
 `;
 
 const VerText = styled.Text`
@@ -131,13 +132,14 @@ const VerText = styled.Text`
   line-height: 20px;
   text-align: center;
   letter-spacing: 0.5px;
-  color: ${(props) => props.theme.gray4};
+  color: ${(props) => props.theme.versionText};
 `;
 
 // #endregion
 
 const Setting = () => {
   const navigation = useNavigation();
+  const isLight = useColorScheme() === "light";
 
   return (
     <CenteredView>
@@ -153,25 +155,45 @@ const Setting = () => {
       <MenuView>
         <MenuButton onPress={() => navigation.navigate("Theme")}>
           <MenuIcon
-            source={require("../assets/images/themeIcon.png")}
+            source={
+              isLight
+                ? require("../assets/images/icon/lightmode/themeBlack.png")
+                : require("../assets/images/icon/darkmode/themeWhite.png")
+            }
           ></MenuIcon>
           <MenuText>Theme</MenuText>
           <ArrowIcon
-            source={require("../assets/images/arrowrightIcon.png")}
+            source={
+              isLight
+                ? require("../assets/images/icon/lightmode/arrowrightBlack.png")
+                : require("../assets/images/icon/darkmode/arrowrightWhite.png")
+            }
           ></ArrowIcon>
         </MenuButton>
         <MenuButton onPress={() => navigation.navigate("Support")}>
           <MenuIcon
-            source={require("../assets/images/supportIcon.png")}
+            source={
+              isLight
+                ? require("../assets/images/icon/lightmode/supportBlack.png")
+                : require("../assets/images/icon/darkmode/supportWhite.png")
+            }
           ></MenuIcon>
           <MenuText>Support</MenuText>
           <ArrowIcon
-            source={require("../assets/images/arrowrightIcon.png")}
+            source={
+              isLight
+                ? require("../assets/images/icon/lightmode/arrowrightBlack.png")
+                : require("../assets/images/icon/darkmode/arrowrightWhite.png")
+            }
           ></ArrowIcon>
         </MenuButton>
         <LogoutButton>
           <LogoutIcon
-            source={require("../assets/images/logoutIcon.png")}
+            source={
+              isLight
+                ? require("../assets/images/icon/lightmode/logoutBlack.png")
+                : require("../assets/images/icon/darkmode/logoutWhite.png")
+            }
           ></LogoutIcon>
           <LogoutText>Logout</LogoutText>
           <VerText>version 1.0</VerText>
