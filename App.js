@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useColorScheme } from "react-native";
 // react-navigation 모듈
 import { ThemeProvider } from "styled-components";
@@ -7,11 +7,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Main from "./view/Main";
+import LoginView from "./components/LoginView";
 import { darkTheme, lightTheme } from "./components/ThemeMode";
 
 const Home = createNativeStackNavigator();
 
 export default function App() {
+  useEffect(() => {}, []);
   const isLight = useColorScheme() === "light";
 
   return (

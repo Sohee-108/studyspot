@@ -26,7 +26,7 @@ const StopwatchView = styled.View`
 const WatchText = styled.Text`
   position: absolute;
   font-size: 13px;
-  color: ${(props) => props.theme.watchTextColor};
+  color: ${(props) => props.theme.typeTextColor};
   top: 85%;
 `;
 

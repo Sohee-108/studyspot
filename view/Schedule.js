@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Alert, useColorScheme } from "react-native";
 import styled from "styled-components";
-import { Agenda } from "react-native-calendars";
+import { Agenda, Calendar } from "react-native-calendars";
 import Modal from "react-native-modal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -256,28 +256,36 @@ const Schedule = () => {
         theme={
           isLight
             ? {
+                textSectionTitleColor: "#313131",
+                monthTextColor: "#313131",
+                dayTextColor: "#313131",
                 calendarBackground: "#ffffff",
                 selectedDayBackgroundColor: "#8C8C8C",
                 selectedDayTextColor: "#ffffff",
                 todayTextColor: "#8C8C8C",
                 dotColor: "#8C8C8C",
-                agendaDayTextColor: "#8C8C8C",
-                agendaDayNumColor: "#8C8C8C",
+                agendaDayTextColor: "#313131",
+                agendaDayNumColor: "#313131",
                 agendaTodayColor: "#8C8C8C",
                 agendaKnobColor: "#8C8C8C",
                 backgroundColor: "#ffffff",
+                textMonthFontSize: 18,
               }
             : {
+                textSectionTitleColor: "#ffffff",
+                monthTextColor: "#ffffff",
+                dayTextColor: "#ffffff",
                 calendarBackground: "#353535",
                 selectedDayBackgroundColor: "#8C8C8C",
                 selectedDayTextColor: "#ffffff",
-                todayTextColor: "#8C8C8C",
+                todayTextColor: "#84735e",
                 dotColor: "#8C8C8C",
-                agendaDayTextColor: "#8C8C8C",
-                agendaDayNumColor: "#8C8C8C",
+                agendaDayTextColor: "#ffffff",
+                agendaDayNumColor: "#ffffff",
                 agendaTodayColor: "#8C8C8C",
                 agendaKnobColor: "#8C8C8C",
                 backgroundColor: "#353535",
+                textMonthFontSize: 18,
               }
         }
         showClosingKnob={true}

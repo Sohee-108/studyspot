@@ -21,7 +21,7 @@ const TabBarIcon = styled.Image`
 
 const settingLightOptions = {
   headerStyle: {
-    backgroundColor: "#E5D5C6",
+    backgroundColor: "#e5d5c6",
   },
   headerTitleStyle: {
     fontWeight: "bold",
@@ -34,15 +34,15 @@ const settingLightOptions = {
 
 const settingDarkOptions = {
   headerStyle: {
-    backgroundColor: "#E5D5C6",
+    backgroundColor: "#84735E",
   },
   headerTitleStyle: {
     fontWeight: "bold",
-    color: "#000000",
+    color: "#313131",
   },
   headerBackTitleVisible: false,
   headerBackButtonMenuEnabled: false,
-  headerTintColor: "#000000",
+  headerTintColor: "#313131",
 };
 
 // #endregion
@@ -88,7 +88,7 @@ const Main = () => {
                 headerShown: false,
                 tabBarActiveTintColor: "#ffffff",
                 tabBarInactiveTintColor: "#313131",
-                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarStyle: { backgroundColor: "#e5d6c6" },
                 tabBarIcon: () => (
                   <TabBarIcon
                     source={require("../assets/images/icon/lightmode/stopwatchBlack.png")}
@@ -97,9 +97,9 @@ const Main = () => {
               }
             : {
                 headerShown: false,
-                tabBarActiveTintColor: "#ffffff",
-                tabBarInactiveTintColor: "#313131",
-                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarActiveTintColor: "#313131",
+                tabBarInactiveTintColor: "#ffffff",
+                tabBarStyle: { backgroundColor: "#84735E" },
                 tabBarIcon: () => (
                   <TabBarIcon
                     source={require("../assets/images/icon/darkmode/stopwatchWhite.png")}
@@ -127,9 +127,9 @@ const Main = () => {
               }
             : {
                 headerShown: false,
-                tabBarActiveTintColor: "#ffffff",
-                tabBarInactiveTintColor: "#313131",
-                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarActiveTintColor: "#313131",
+                tabBarInactiveTintColor: "#ffffff",
+                tabBarStyle: { backgroundColor: "#84735E" },
                 tabBarIcon: () => (
                   <TabBarIcon
                     source={require("../assets/images/icon/darkmode/scheduleWhite.png")}
@@ -157,9 +157,9 @@ const Main = () => {
               }
             : {
                 headerShown: false,
-                tabBarActiveTintColor: "#ffffff",
-                tabBarInactiveTintColor: "#313131",
-                tabBarStyle: { backgroundColor: "#E5D5C6" },
+                tabBarActiveTintColor: "#313131",
+                tabBarInactiveTintColor: "#ffffff",
+                tabBarStyle: { backgroundColor: "#84735E" },
                 tabBarIcon: () => (
                   <TabBarIcon
                     source={require("../assets/images/icon/darkmode/settingsWhite.png")}
