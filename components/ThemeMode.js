@@ -11,7 +11,9 @@ export const lightTheme = {
   watchTextColor: "#313131", //StopWatch.js Watch Text
 
   //LoginView Color Style
-  loginButtonColor: "#bbbbbb", //LoginView.js GoogleLogin Button Border
+  loginButtonBorderColor: "#bbbbbb", //LoginView.js GoogleLogin Button Border
+  loginButtonColor: "#ffffff", //LoginView.js GoogleLogin Button
+  loginButtonTextColor: "#313131", //LoginView.js GoogleLogin Button Text
 
   //Settings Color Style
   emailText: "#5c5c5c", //Setting.js Email Text
@@ -34,7 +36,9 @@ export const darkTheme = {
   watchTextColor: "#ffffff", //StopWatch.js Watch Text
 
   //LoginView Color Style
-  loginButtonColor: "#bbbbbb", //LoginView.js GoogleLogin Button Border
+  loginButtonBorderColor: "#bbbbbb", //LoginView.js GoogleLogin Button Border
+  loginButtonColor: "#353535", //LoginView.js GoogleLogin Button
+  loginButtonTextColor: "#ffffff", //LoginView.js GoogleLogin Button Text
 
   //Settings Color Style
   emailText: "#5c5c5c", //Setting.js Email Text

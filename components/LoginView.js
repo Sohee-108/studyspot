@@ -36,9 +36,10 @@ const GoogleSigninButton = styled.TouchableOpacity`
   flex-direction: row;
   width: 347px;
   height: 61px;
-  border-color: ${(props) => props.theme.loginButtonColor};
+  border-color: ${(props) => props.theme.loginButtonBorderColor};
   border-width: 3px;
   border-radius: 5px;
+  background-color: ${(props) => props.theme.loginButtonColor};
 `;
 
 const GoogleIcon = styled.Image`
@@ -51,7 +52,7 @@ const GoogleText = styled.Text`
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.loginButtonTextColor};
 `;
 
 // #endregion
@@ -166,7 +167,7 @@ LoginView = () => {
           ></LogoImage>
           <GoogleSigninButton onPress={signIn}>
             <GoogleIcon
-              source={require("../assets/images/googleIcon.jpeg")}
+              source={require("../assets/images/googleIcon.png")}
             ></GoogleIcon>
             <GoogleText>sign-in with google</GoogleText>
           </GoogleSigninButton>
