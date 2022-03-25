@@ -29,7 +29,7 @@ export const darkTheme = {
   //Common Color
   backgroundColor: "#353535",
   textColor: "#ffffff",
-  basicColor: "#e5d5c6",
+  basicColor: "#84735E",
 
   //StopWatch Color Style
   typeTextColor: "#C5C5C5", //StopWatch.js Watch Type Text
