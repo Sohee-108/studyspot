@@ -11,6 +11,7 @@ import LoginView from "./components/LoginView";
 import { darkTheme, lightTheme } from "./components/ThemeMode";
 
 const Home = createNativeStackNavigator();
+// const Login = createSwitchNavigator();
 
 export default function App() {
   useEffect(() => {}, []);
@@ -27,6 +28,11 @@ export default function App() {
             component={Main}
             options={{ headerShown: false }}
           />
+          {/* <Home.Screen
+            name="LoginView"
+            component={LoginView}
+            options={{ headerShown: false }}
+          /> */}
         </Home.Navigator>
       </NavigationContainer>
     </ThemeProvider>

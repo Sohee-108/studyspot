@@ -87,7 +87,7 @@ LoginView = () => {
       setUserName(userName);
       setUserImage(userImage);
       setLoggedIn(loggedIn);
-      AuthLogin();
+      // AuthLogin();
       console.log("login");
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -125,7 +125,7 @@ LoginView = () => {
       const userImage = null;
       setUserName(userName);
       setUserImage(userImage);
-      AuthLogout();
+      // AuthLogout();
       console.log("logout");
     } catch (error) {
       console.error(error);
@@ -157,7 +157,7 @@ LoginView = () => {
     }
   };
 
-  if (authStatus == false) {
+  if (loggedIn == false) {
     return (
       <CenteredView>
         <View title="Logo">
@@ -174,7 +174,7 @@ LoginView = () => {
         </View>
       </CenteredView>
     );
-  } else if (authStatus == true) {
+  } else if (loggedIn == true) {
     return (
       <CenteredView>
         <View title="Logo">
@@ -194,7 +194,7 @@ LoginView = () => {
             source={{ uri: userImage }}
             style={{ width: 200, height: 200 }}
           ></Image>
-          <Text>{userName} 님 환영합니다</Text>
+          <Text name={userName}>{userName} 님 환영합니다</Text>
           <Text title="googleProfileName"></Text>
         </View>
       </CenteredView>
