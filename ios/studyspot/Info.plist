@@ -52,10 +52,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>EliceDigitalBaeum_Regular.ttf</string>
-		<string>ceDigitalBaeumOTF_Regular.otf</string>
-		<string>BMHANNAPro.ttf</string>
-		<string>BMHANNAProOTF.otf</string>
+		<string></string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>SplashScreen</string>

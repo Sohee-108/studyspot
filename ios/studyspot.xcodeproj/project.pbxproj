@@ -12,7 +12,8 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		19ED3EEC74B748ED870B10C8 /* BMHANNAPro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFDFE4411E594E1FABC957C3 /* BMHANNAPro.ttf */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		8C2C027727427FE000EE2C6F /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 8C2C027627427FDF00EE2C6F /* Fonts */; };
+		8C044C8527EEFDEA006C1A8C /* BMHANNAProOTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8C044C8327EEFDEA006C1A8C /* BMHANNAProOTF.otf */; };
+		8C044C8627EEFDEA006C1A8C /* BMHANNAPro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C044C8427EEFDEA006C1A8C /* BMHANNAPro.ttf */; };
 		8C6D42E127579B2700C1AD9E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C6D42E027579B2700C1AD9E /* GoogleService-Info.plist */; };
 		9211E695C52C4E1C867F86ED /* BMHANNAProOTF.otf in Resources */ = {isa = PBXBuildFile; fileRef = C031DF1B9903473BA2D9BA09 /* BMHANNAProOTF.otf */; };
 		96905EF65AED1B983A6B3ABC /* libPods-studyspot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-studyspot.a */; };
@@ -30,7 +31,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = studyspot/main.m; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-studyspot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-studyspot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B441C6180DC9F7D6524F895 /* Pods-studyspot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-studyspot.release.xcconfig"; path = "Target Support Files/Pods-studyspot/Pods-studyspot.release.xcconfig"; sourceTree = "<group>"; };
-		8C2C027627427FDF00EE2C6F /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		8C044C8327EEFDEA006C1A8C /* BMHANNAProOTF.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAProOTF.otf; sourceTree = "<group>"; };
+		8C044C8427EEFDEA006C1A8C /* BMHANNAPro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BMHANNAPro.ttf; sourceTree = "<group>"; };
 		8C6D42E027579B2700C1AD9E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = studyspot/SplashScreen.storyboard; sourceTree = "<group>"; };
 		AFDFE4411E594E1FABC957C3 /* BMHANNAPro.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = BMHANNAPro.ttf; path = ../assets/fonts/BMHANNAPro.ttf; sourceTree = "<group>"; };
@@ -105,8 +107,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				8C044C8227EEFDEA006C1A8C /* fonts */,
 				8C6D42E027579B2700C1AD9E /* GoogleService-Info.plist */,
-				8C2C027627427FDF00EE2C6F /* Fonts */,
 				13B07FAE1A68108700A75B9A /* studyspot */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
@@ -126,6 +128,16 @@
 				13B07F961A680F5B00A75B9A /* studyspot.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8C044C8227EEFDEA006C1A8C /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8C044C8327EEFDEA006C1A8C /* BMHANNAProOTF.otf */,
+				8C044C8427EEFDEA006C1A8C /* BMHANNAPro.ttf */,
+			);
+			name = fonts;
+			path = ../assets/fonts;
 			sourceTree = "<group>";
 		};
 		92DBD88DE9BF7D494EA9DA96 /* studyspot */ = {
@@ -215,10 +227,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C044C8627EEFDEA006C1A8C /* BMHANNAPro.ttf in Resources */,
+				8C044C8527EEFDEA006C1A8C /* BMHANNAProOTF.otf in Resources */,
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				8C2C027727427FE000EE2C6F /* Fonts in Resources */,
 				19ED3EEC74B748ED870B10C8 /* BMHANNAPro.ttf in Resources */,
 				9211E695C52C4E1C867F86ED /* BMHANNAProOTF.otf in Resources */,
 				8C6D42E127579B2700C1AD9E /* GoogleService-Info.plist in Resources */,

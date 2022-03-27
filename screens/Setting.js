@@ -15,7 +15,7 @@ const ProfileView = styled.View`
   flex: 0.3;
   position: absolute;
   top: 0px;
-  width: 100%;
+  width: 1000px;
   height: 200px;
   align-items: center;
   background-color: ${(props) => props.theme.basicColor};

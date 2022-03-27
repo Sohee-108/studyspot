@@ -69,9 +69,9 @@ LoginView = () => {
     GoogleSignin.configure({
       webClientId:
         "587985236624-rka1iu6r7moani49i9aue19gpo0lvko0.apps.googleusercontent.com",
-      offlineAccess: true,
-      hostedDomain: "",
-      forceConsentPrompt: true,
+      // offlineAccess: true,
+      // hostedDomain: "",
+      // forceConsentPrompt: true,
     });
     getAuthStatus();
   }, []);
