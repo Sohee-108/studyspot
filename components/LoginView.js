@@ -68,10 +68,7 @@ LoginView = () => {
   useEffect(() => {
     GoogleSignin.configure({
       webClientId:
-        "587985236624-rka1iu6r7moani49i9aue19gpo0lvko0.apps.googleusercontent.com",
-      // offlineAccess: true,
-      // hostedDomain: "",
-      // forceConsentPrompt: true,
+        "387920970666-8vb6vnpucthte0mpjrh69jg47huqe15m.apps.googleusercontent.com",
     });
     getAuthStatus();
   }, []);
