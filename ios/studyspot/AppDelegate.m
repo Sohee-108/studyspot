@@ -1,5 +1,4 @@
 #import "AppDelegate.h"
-#import <Firebase.h> //firebase 추가
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
@@ -17,14 +16,14 @@
 
 #import UIKit;
 #import Firebase;
+#import <Firebase.h>
 
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  
-  if([FIRApp defaultApp] == nil){
+  if ([FIRApp defaultApp] == nil) {
     [FIRApp configure];
   }
 
