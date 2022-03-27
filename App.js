@@ -2,13 +2,11 @@ import React, { useEffect } from "react";
 import { useColorScheme } from "react-native";
 // react-navigation 모듈
 import { ThemeProvider } from "styled-components";
-import { createSwitchNavigator } from "react-navigation";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Main from "./screens/Main";
-import LoginView from "./components/LoginView";
-import { darkTheme, lightTheme } from "./components/ThemeMode";
+import { darkTheme, lightTheme } from "./style/ThemeMode";
 
 const Home = createNativeStackNavigator();
 // const Login = createSwitchNavigator();
